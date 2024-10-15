@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="javascript/scrollfunction.js"></script>
+    <meta charset="UTF-8">
+    <title>Radiant Smiles Dental | About Us</title>
+    <style>
+        html{height: 100%;
+                min-height: 1080x;
+                padding:0;
+                border:0;
+                min-width: 1850px;
+            }
+            body{background-color: white;
+                font-family:Verdana, Arial, sans-serif;
+                height:100%;
+                margin:0 ;
+                overflow:hidden;
+            }
+            p{
+                border:0;
+                margin:0;
+            }
+            header{
+                background-color: #21c1b9;
+                height:15%;
+                width: 100%;
+                border: 0;
+                position:fixed;
+                min-width: 1050px;
+                min-height:138px;
+                z-index: 1;
+            }   
+            #left-header a{
+                height:100%;
+                width:100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #mid-header a{
+                font-size: 23px;
+                margin-left: 3%;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                color: white;
+                padding: 20px 15px;
+                border-radius: 12px;
+                text-decoration: none;
+            }
+            #mid-header a:hover{
+                font-size: 23px;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                background-color: white;
+                padding: 20px 15px;
+                border-radius: 12px;
+                box-shadow: 2px 3px 3px #404040;
+                color:#404040;
+            }
+            #right-header a{
+                font-size: 23px;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                color: #404040;
+                text-decoration: none;
+                text-align: center;
+                margin: auto;
+                background-color: white;
+                padding: 20px 15px;
+                border-radius: 12px;
+                box-shadow: 2px 3px 3px #404040;
+            }
+            #right-header a:hover{
+                font-size: 23px;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                color: #21c1b9;
+                text-decoration: none;
+                text-align: center;
+                margin: auto;
+                background-color: white;
+                padding: 20px 15px;
+                border-radius: 12px;
+                box-shadow: 2px 4px 4px #404040;
+            }
+            #left-header{
+                width: 12.5%;
+                height: 100%;
+                float: left;
+                min-width: 200px;
+            }
+            #mid-header{
+                width: 55%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                float: left;
+            }
+            #right-header{
+                width: 17.5%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                float: right;
+                text-align: center;
+                min-width: 250px;
+            }
+
+            /* ================================================ First page ================================================ */
+            #page1 {
+                height:100%;
+                width:100%;
+                background-color: rgb(238, 255, 235);
+                min-height:900px;
+            }
+            #page1-maintext {
+                text-align: center;
+                font-size: 70px;
+                padding-top: 10%;
+                font-style: normal;
+                color: #115278;
+            }
+            #page1-subtext {
+                text-align: center;
+                font-size: 35px;
+                padding: 0 10%;
+                color: #404040;
+            }
+            #page1-image-wrapper {
+                display: flex;
+                justify-content: center;
+            }
+            .page1-image-container {
+                position: relative;
+            }
+            .page1-img {
+                display: block;
+                border: #404040 2px solid;
+                border-radius: 45px;
+                margin-top: 20px;
+                margin-left: 20px;
+                margin-right: 20px;
+                transition: transform 0.1s ease;
+            }
+            .page1-img:hover{
+                transform: scale(1.1);
+            }
+            .page1-doctor-name {
+                position: absolute;
+                border-radius: 0 0 45px 45px;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                font-size: 35px;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 0.1s ease;
+            }
+            .page1-image-container:hover .page1-doctor-name {
+                opacity: 1;
+            }
+            h1{
+                font-weight: 700;
+                font-family: roboto;
+                font-style:normal;
+                margin-top:30px;
+                margin-bottom:10px;
+                font-size:75px
+            }
+            h2{
+                font-weight: 600;
+                font-family: roboto;
+                font-style:normal;
+                font-size:30px;
+                line-height:38px;
+            }
+            span{
+                font-weight: 600;
+                font-family: roboto;
+                font-style:normal;
+                font-size:25px;
+                line-height:35px;
+                color: #404040;
+                margin-left:10px;
+            }
+            .img{
+                border-radius: 45px;
+            }
+            .appointment-button {
+                font-size: 23px;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                color: white;
+                background-color: #115278;
+                text-decoration: none;
+                text-align: center;
+                margin: auto;
+                padding: 20px 15px;
+                border: 0;
+                border-radius: 12px;
+                margin-top: 30px;
+                transition: background-color 0.3s ease;
+            }
+            .appointment-button:hover {
+                color: #404040;
+                background-color: #21c1b9;
+            }
+
+            /* ================================================ Second page ================================================ */
+            .page {
+                height:85%;
+                width:100%;
+                min-height:700px;
+            }
+            #page2 {
+                background-color: white;
+                display: flex;
+                align-items: center;
+            }
+            #page2-image {
+                padding-left: 7.5%;
+            }
+            #page2-text {
+                padding: 0 7.5% 0 3%;
+                
+            }
+            #page2-text-header {
+                font-size: 50px;
+                font-style: italic;
+                color: #115278;
+                margin-top: -50px;
+            }
+            #page2-text-subheader {
+                font-size: 20px;
+                color: #404040;
+            }
+            #page2-contact {
+                display: flex;
+                align-items: center;
+            }
+
+            /* ================================================ Third page ================================================ */
+            #page3 {
+                background-color: rgb(238, 255, 235);
+                display: flex;
+                align-items: center;
+            }
+            #page3-image {
+                padding-right: 7.5%;
+            }
+            #page3-text {
+                padding: 0 3% 0 7.5%;
+                text-align: justify;
+            }
+            #page3-text-header {
+                font-size: 50px;
+                font-style: italic;
+                color: #115278;
+                margin-top: -50px;
+            }
+            #page3-text-subheader {
+                font-size: 20px;
+                color: #404040;
+            }
+            #page3-contact {
+                display: flex;
+                align-items: center;
+            }
+
+
+            /* ================================================ Fourth page ================================================ */
+            #page4 {
+                background-color: white;
+                display: flex;
+                align-items: center;
+            }
+            #page4-image {
+                padding-left: 7.5%;
+            }
+            #page4-text {
+                padding: 0 7.5% 0 3%;
+                text-align: justify;
+            }
+            #page4-text-header {
+                font-size: 50px;
+                font-style: italic;
+                color: #115278;
+                margin-top: -50px;
+            }
+            #page4-text-subheader {
+                font-size: 20px;
+                color: #404040;
+            }
+            #page4-contact {
+                display: flex;
+                align-items: center;
+            }
+
+            /* ================================================ Footer ================================================ */
+            footer {
+                height: 15%;
+                background-color: #21c1b9;
+                align-content: center;
+                text-align: center;
+            }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="left-header">
+            <a href="index.html"><img src="images/logo.png" height = 85%></a>
+        </div>
+        <div id="mid-header">
+            <a href="services.html" style="margin-left:2%">OUR SERVICES</a> <!-- Style Overwrite -->
+            <a href="about.html">ABOUT US</a>
+            <a href="contact.html">CONTACT US</a>
+        </div>
+        <div id="right-header">
+            <a href="login.php">APPOINTMENTS</a>
+        </div>
+    </header>
+
+    <div id="page1">
+        <div id="page1-maintext">
+            <h1>
+                Meet the Experts
+            </h1>
+        </div>
+        <div id="page1-subtext">
+            <h2>
+                Dedicated to Perfecting Your Smile with Advanced Orthodontic Care
+            </h2>
+        </div>
+        <div id="page1-image-wrapper">
+            <div id="page1-image1" class="page1-image-container">
+                <a href="#page2" class="anchor">
+                    <img src="images/dentist2.webp" alt="orthodontist" height="400px" class="page1-img">
+                    <div class="page1-doctor-name">Dr. Zhang Wei</div>
+                </a>
+            </div>
+            <div id="page1-image2" class="page1-image-container">
+                <a href="#page3" class="anchor">
+                    <img src="images/dentist1.jpg" alt="dentist" height="400px" class="page1-img">
+                    <div class="page1-doctor-name">Dr. Wei Yuan</div>
+                </a>
+            </div>
+            <div id="page1-image3" class="page1-image-container">
+                <a href="#page4" class="anchor">
+                    <img src="images/dentist3.webp" alt="dentist" height="400px" class="page1-img">
+                    <div class="page1-doctor-name">Dr. Yi Song</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="page2" class="page">
+        <div id="page2-image">
+            <img src="images/dentist2.webp" alt="orthodontist" height="500px" class="img">
+        </div>
+        <div id="page2-text">
+            <div id="page2-text-header">
+                <h1>Dr Zhang Wei</h1>
+            </div>
+            <div id="page2-text-subheader">
+                <h2>
+                    Dr. Zhang Wei graduated with a Bachelor of Dental Surgery from the National University of Singapore 
+                    and later pursued a Master's of Dental Surgery (Orthodontics) as well as a Master's of Orthodontics 
+                    RCS from the University of Edinburgh. With over 12 years of experience in orthodontics, he specialises 
+                    in treating both children and adults, offering a range of solutions including braces and clear 
+                    aligners to help patients achieve their ideal smile.
+                </h2>
+            </div>
+            <div id="page2-contact">
+                <img src="images/email-1-svgrepo-com.svg" alt="email-icon" height="30px">
+                <span>dr_zhangwei@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+                <img src="images/phone-svgrepo-com.svg" alt="phone-icon" height="20px">
+                <span>+65 8123 4567</span>
+            </div>
+            <button class="appointment-button">
+                BOOK APPOINTMENT
+            </button>
+        </div>
+    </div>
+    <div id="page3" class="page">
+        <div id="page3-text">
+            <div id="page3-text-header">
+                <h1 style="margin-top:30px;">Dr Wei Yuan</h1>
+            </div>
+            <div id="page3-text-subheader">
+                <h2 style="margin-top:20px;">
+                    Dr. Wei Yuan completed his dental studies at the National University of Singapore before going on to 
+                    do a Master's in Dental Surgery (Orthodontics). With 15 years of experience, Dr. Wei Yuan is dedicated 
+                    to providing personalized orthodontic care using the latest techniques in the field and maximaze dental health outcomes.
+                </h2>
+            </div>
+            <div id="page3-contact">
+                <img src="images/email-1-svgrepo-com.svg" alt="email-icon" height="30px">
+                <span>dr_weiyuan@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+                <img src="images/phone-svgrepo-com.svg" alt="phone-icon" height="20px">
+                <span>+65 8222 5555</span>
+            </div>
+            <button class="appointment-button">
+                BOOK APPOINTMENT
+            </button>
+        </div>
+        <div id="page3-image">
+            <img src="images/dentist1.jpg" alt="dentist" height="500px" class="img">
+        </div>
+    </div>
+    <div id="page4" class="page">
+        <div id="page4-image">
+            <img src="images/dentist3.webp" alt="dentist" height="500px" class="img">
+        </div>
+        <div id="page4-text">
+            <div id="page4-text-header">
+                <h1>Dr Yi Song</h1>
+            </div>
+            <div id="page4-text-subheader">
+                <h2>
+                    Dr. Yi Song is an accredited specialist from the Singapore Dental Council. He holds a Master's Degree in 
+                    Dental Surgery (Orthodontics) from King's College London and has been practising orthodontics for 8 years. 
+                    He is passionate about utilising cutting-edge technology, including 3D imaging and digital orthodontics, to 
+                    provide precise and comfortable treatments for his patients.
+                </h2>
+            </div>
+            <div id="page4-contact">
+                <img src="images/email-1-svgrepo-com.svg" alt="email-icon" height="30px">
+                <span>dr_yisong@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+                <img src="images/phone-svgrepo-com.svg" alt="phone-icon" height="20px">
+                <span>+65 9876 5432</span>
+            </div>
+            <button class="appointment-button">
+                BOOK APPOINTMENT
+            </button>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy 2024 Radiant Smiles Dental</p>
+    </footer>
+</body>
+</html>
