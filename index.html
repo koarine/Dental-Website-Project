@@ -2,6 +2,8 @@
 <html lang="en">
     <script src="javascript/scrollfunction.js"></script>
     <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -133,6 +135,12 @@
                 margin-bottom: 40px;
                 margin-top:30px;
             }
+            #Text3 {
+                color:#404040;
+                font-family: "Roboto", system-ui;
+                font-size:28px;
+                padding-left: 200px;
+            }
             #Pic1{
                 margin-top:190PX
             }
@@ -257,19 +265,25 @@
                 background-color: rgb(238, 255, 235);
                 min-height:700px
             }
+            #bottom3-content {
+                display: flex;
+            }
             #b3left{
                 float: left;
                 width: 50%;
                 height: 100%;
+                margin-top: 30px;
             }
             #b3right{
-                margin-left: 50%;
                 width: 50%;
+                width: 700px;
                 height: 100%;
+                align-content: center;
+                margin-top: 60px;
             }
-            #map{
-                margin-top:150px;
-                margin-left:80px;
+            #b3right-map{
+                height: 450px;
+                width: 700px;
             }
         </style>
     </head>
@@ -307,7 +321,7 @@
             </div>
             <div id="b2-lower">
                 <div id="b2-lower-1">
-                    <img src = "images/orthodontist.webp" width=180px style = "margin-left:200px">
+                    <img src = "images/dentist2.webp" width=180px style = "margin-left:200px; border-radius: 1000px;">
                     <p class="b2head" style="margin-left: 200px;">Dr Zhang Wei</p>
                     <p class="b2child" style="margin-left: 200px; margin-bottom:30px">Dentist<br>B.D.S. (Singapore)<br>
                         Masters of Dental Surgery (Orthodontics)<br>
@@ -324,7 +338,7 @@
                     <a href="" class="b2button" style="margin-left: 20px;">LEARN MORE</a>
                 </div>
                 <div id="b2-lower-3">
-                    <img src = "images/orthodontist.webp" width=180px style="margin-left: 10px;">
+                    <img src = "images/dentist3.webp" width=180px style="margin-left: 10px; border-radius: 1000px;">
                     <p class="b2head" style="margin-left: 210px;">Dr Yi Song</p>
                     <p class="b2child"style="margin-left: 210px; margin-bottom:30px">Orthodontist<br>
                         Accredited Specialist (Singapore Dental Council)<br>
@@ -335,15 +349,45 @@
             </div>
         </div>
         <div id="bottom3">
-            <div id="b3left">
-                <p id="text3" style="padding-top:115px">Convenient <br>& Accessible</p>
-                <p id="Text2" style="margin-bottom: 0px;">Located in the bustling Jurong East estate, we are conveniently located in JEM which is just a 5 minutes <br>walk from the Jurong East MRT.</p>
-                <p id="Text2" style="margin-top: 20px;">Address: 50 Jurong Gateway Rd, Jem #02-07<br>Operating Hours: Mon-Sat, 9am-7pm
-                <br>Contact: (+65) 6823 5148</p>
-                <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+            <div id="bottom3-header">
+                <p id="text3" style="padding-top:115px">Convenient & Accessible</p>
             </div>
-            <div id="b3right">
-                <iframe id="map"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div id="bottom3-content">
+                <div id="b3left">
+                    <p id="Text2">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
+                    <p id="Text3"><b>JURONG EAST</b><br>Singapore 608549<br>Mon-Sat, 9:00 am-7:00 pm</p>
+                    <p id="Text3" style="margin-bottom: 50px;"><b>BISHAN</b><br>Singapore 579837<br>Mon-Sun, 9:00 am-9:00 pm</p>
+                    <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+                </div>
+                <div id="b3right">
+                    <div id="b3right-map">
+                        <script>
+                            var map = L.map('b3right-map').setView([1.345, 103.8], 12);
+                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            }).addTo(map);
+                            var jem_marker = L.marker([1.33283, 103.74331]).addTo(map);
+                            var j8_marker = L.marker([1.35093, 103.84873]).addTo(map);
+            
+                            jem_marker.on('mouseover', function (e) {
+                                this.bindPopup("<b>Jurong East</b><br>50 Jurong Gateway Rd<br>Jem #02-07<br>Singapore 608549").openPopup();
+                            });
+                            jem_marker.on('mouseout', function (e) {
+                                this.closePopup();
+                            });
+                            j8_marker.on('mouseover', function (e) {
+                                this.bindPopup("<b>Bishan</b><br>9 Bishan Pl<br>Junction 8 #02-65<br>Singapore 579837").openPopup();
+                            });
+                            j8_marker.on('mouseout', function (e) {
+                                this.closePopup();
+                            });
+                        </script>
+                    </div>
+                        
+    
+                    <!-- <iframe id="map"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                </div>
             </div>
         </div>
     </body>
