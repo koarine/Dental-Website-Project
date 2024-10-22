@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Database connection details
 $host = 'localhost';
 $dbname = 'dental';
@@ -14,7 +15,7 @@ if ($mysqli->connect_error) {
 }
 
 // User input parameters (retrieved from a form)
-$doctorID = $_POST['doctor_id'];          // Doctor ID
+$doctorID = $_SESSION['user_id'];          // Doctor ID
 $startDate = $_POST['start_date'];        // Start date (e.g., '2024-10-15')
 $endDate = $_POST['end_date'];            // End date (e.g., '2024-10-30')
 $startTime = $_POST['start_time'];        // Start time (e.g., '09:00:00')
