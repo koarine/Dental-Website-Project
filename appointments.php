@@ -10,7 +10,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <script src="javascript/scrollfunction.js"></script>
+    
     <head>
         <title>Radiant Smiles Dental | Home</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,12 @@
         <style>
             html{
                 height:100%;
-                min-height: 1080x;
+                min-height: 900px;
                 padding:0;
                 border:0;
                 min-width: 1850px;
                 scroll-behavior: smooth;
-                overflow: hidden;
+                
             }
             body{background-color: white;
                 height:100%;
@@ -113,30 +113,61 @@
                 height:85%;
                 text-align:center;
                 font-family:"roboto";
+                background-color:rgb(238, 255, 235);
+                display: flex;  
+                justify-content: center; 
+                align-items: center;
             }
-            #page a{
-                font-size: 23px;
-                font-weight: 550;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-                background-color: #21c1b9;
-                
-                padding: 35px 180px;
-                border-radius: 12px;
-                box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-                margin-top:200px;
-            }
-            #page a:hover{
-                color: #404040;
-                
-            }
+
             #wb{
                 font-size:60px;
                 font-weight:600;
                 color:#404040;
                 padding-top:200px;
                 
+            }
+            #box{
+                width: 28%;
+                height: 54%;
+                background-color:white;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                border-radius:50px;
+                
+            }
+            .heading{
+                font-family:"roboto";
+                font-size:50px;
+                font-weight:300;
+                color:black;    
+                margin-top:50px;
+            }
+            #box a{
+                background-color: #21c1b9;
+                border-radius:40px;
+                padding: 18px 30px;
+                margin-top:20px;
+                display:inline-block;
+                color:white;
+                font-family:"roboto";
+                font-size:32px;
+                font-weight:500;
+                width:400px;
+                opacity:0.90;
+                transition:0.5s;
+            }
+            #box a:hover{
+                opacity:1;
+                color:rgb(45,45,45);
+            }
+            ul{
+                margin:0;
+                padding:0;
+            }
+            li{
+                list-style-type:none;
+            }
+            a{
+                text-decoration: none;
             }
         </style>
     </head>
@@ -155,42 +186,19 @@
             </div>
         </header>
         <div id="blank"></div>
-                <div id="page">
-                    <p id="wb">Welcome Back, <?php echo $_SESSION['user_name']; ?></p>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-        <?php
-            if($_SESSION['user_type']=='patient'){
-                echo'
-                    <a href="" id="logout" class="">VIEW APPOINTMENTS</a>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <a href="" style ="padding: 35px 157px;" id="logout">BOOK NEW APPOINTMENT</a>
-                </div>
-                ';
-            }
-            else{
-                echo'
-                    <a href="" class="" style="padding: 35px 210px;">VIEW SCHEDULE</a>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <a href="" style ="padding: 35px 218px;" >SET SCHEDULE</a>
-                </div>
-                ';
-            }
-            exit();
-        ?>
+        <div id="page">
+            <div id="box">
+                <p class="heading">Welcome Back,<br> <?php echo $_SESSION["user_name"];?></p>
+                <ul>    
+                    <li>
+                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"appointments_client_view.html";}else{echo"appointments_doctor_view.html";}?>" >MY APPOINTMENTS</a>
+                    </li>
+                    <li>
+                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"book.html";}else{echo"schedule.html";}?>">BOOK APPOINTMENT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
     </body>
 </html>
