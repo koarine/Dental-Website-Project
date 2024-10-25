@@ -113,6 +113,7 @@
                 height:100%;
                 width:100%;
                 background-color: rgb(238, 255, 235);
+                /* background: linear-gradient(rgb(238, 255, 235) 95%, white); */
                 min-height:900px
             }
             #Text1{
@@ -135,7 +136,7 @@
                 margin-bottom: 40px;
                 margin-top:30px;
             }
-            #Text3 {
+            #text-addresses {
                 color:#404040;
                 font-family: "Roboto", system-ui;
                 font-size:28px;
@@ -184,12 +185,13 @@
                 height:85%;
                 width:100%;
                 background-color: white;
+                /* background: linear-gradient(white 95%, rgb(238, 255, 235)); */
                 min-height:700px
             }
             #text3{
                 font-family: "Roboto", system-ui;
                 font-weight: 700;
-                font-style: normal;
+                font-style: italic;
                 margin: 0;
                 font-size: 92px;
                 color:#115278;
@@ -263,6 +265,7 @@
                 height:85%;
                 width:100%;
                 background-color: rgb(238, 255, 235);
+                /* background: linear-gradient(rgb(238, 255, 235) 80%, #beccb8); */
                 min-height:700px
             }
             #bottom3-content {
@@ -275,16 +278,24 @@
                 margin-top: 30px;
             }
             #b3right{
-                width: 50%;
                 width: 700px;
-                height: 100%;
-                align-content: center;
-                margin-top: 60px;
-            }
-            #b3right-map{
                 height: 450px;
-                width: 700px;
+                margin-top: 60px;
+
+                border-width: 1px 1px 1px 1px;
+                border-style: solid;
+                border-color: #404040;
+                border-radius: 40px;
+                position: relative;
+                overflow: hidden;
             }
+            #b3right iframe {
+                position: absolute;
+                top: -50px;
+                left: -4px;
+                width: 110%;
+            }
+
         </style>
     </head>
     <body>
@@ -355,36 +366,24 @@
             <div id="bottom3-content">
                 <div id="b3left">
                     <p id="Text2">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
-                    <p id="Text3"><b>JURONG EAST</b><br>Singapore 608549<br>Mon-Sat, 9:00 am-7:00 pm</p>
-                    <p id="Text3" style="margin-bottom: 50px;"><b>BISHAN</b><br>Singapore 579837<br>Mon-Sun, 9:00 am-9:00 pm</p>
+                    <div id="text-addresses">
+                        <p style="color: #115278;">
+                            <b>JURONG EAST</b><br>
+                        </p>
+                        <p style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">
+                            Singapore 608549<br>Mon-Sat, 9:00 am-7:00 pm
+                        </p>
+                        <p style="color: #115278;">
+                            <b>BISHAN</b><br>
+                        </p>
+                        <p style="font-size: 20px; margin-bottom: 50px; font-weight: 700;">
+                            Singapore 579837<br>Mon-Sun, 9:00 am-9:00 pm
+                        </p>
+                    </div>
                     <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
                 </div>
                 <div id="b3right">
-                    <div id="b3right-map">
-                        <script>
-                            var map = L.map('b3right-map').setView([1.345, 103.8], 12);
-                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                            }).addTo(map);
-                            var jem_marker = L.marker([1.33283, 103.74331]).addTo(map);
-                            var j8_marker = L.marker([1.35093, 103.84873]).addTo(map);
-            
-                            jem_marker.on('mouseover', function (e) {
-                                this.bindPopup("<b>Jurong East</b><br>50 Jurong Gateway Rd<br>Jem #02-07<br>Singapore 608549").openPopup();
-                            });
-                            jem_marker.on('mouseout', function (e) {
-                                this.closePopup();
-                            });
-                            j8_marker.on('mouseover', function (e) {
-                                this.bindPopup("<b>Bishan</b><br>9 Bishan Pl<br>Junction 8 #02-65<br>Singapore 579837").openPopup();
-                            });
-                            j8_marker.on('mouseout', function (e) {
-                                this.closePopup();
-                            });
-                        </script>
-                    </div>
-                    <!-- <iframe id="map"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=11xwnkbjIFIxmA_Jyb0E97JPBredro7g&ehbc=2E312F&noprof=1&z=12" width="700" height="513"></iframe>
                 </div>
             </div>
         </div>
