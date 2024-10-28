@@ -26,6 +26,7 @@
                 position:fixed;
                 min-width: 1050px;
                 min-height:138px;
+                z-index: 100;
             }
 
             /* ================================================ header (navbar) ================================================ */
@@ -97,7 +98,16 @@
             }
 
             /* ================================================ First row ================================================ */
-
+            @keyframes slideIn {
+                0% {
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
             #lower1{
                 background-color: rgb(238, 255, 235);
                 height:85%;
@@ -115,6 +125,7 @@
                 height:80%;
                 float: left;
                 color:#115278;
+                z-index: -1;
             }
             .boxbutton{
                 background-color: rgb(238, 255, 235);
@@ -126,7 +137,41 @@
                 border-radius: 25px;
                 text-align: center;
             }
-
+            #sub1 {
+                animation: slideIn ease 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-delay: 0;
+                opacity: 0;
+            }
+            #sub2 {
+                animation: slideIn ease 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-delay: 0.1s;
+                opacity: 0;
+            }
+            #sub3 {
+                animation: slideIn ease 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-delay: 0.2s;
+                opacity: 0;
+            }
+            #sub4 {
+                animation: slideIn ease 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-delay: 0.3s;
+                opacity: 0;
+            }
+            #sub5 {
+                animation: slideIn ease 1s;
+                animation-iteration-count: 1;
+                animation-fill-mode: forwards;
+                animation-delay: 0.4s;
+                opacity: 0;
+            }
             .btag{
                 font-family: "Roboto", system-ui;
                 font-weight: 700;
