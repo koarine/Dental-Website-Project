@@ -1,17 +1,13 @@
 <?php
     session_start();
     if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='patient' || $_SESSION['user_type']=='doctor' )){
+        if(!($_SESSION['user_type']=='patient')){
             header("Location: login.php");
             exit();
         }
     }
-    if(isset($_SESSION['cancel'])){
-        if($_SESSION['cancel']==true){
-            echo '<script>alert("Booking Successfully Cancelled ✔️");</script>';
-            unset($_SESSION['cancel']);
-        }
-    }
+    $appt_id = $_POST['link']
+    
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +33,6 @@
                 margin:0 ;
             }
             header{
-                
                 font-family: "Roboto", sans-serif;
                 background-color: #21c1b9;
                 height:15%;
@@ -77,7 +72,7 @@
             }
             #right-header a{
                 font-size: 23px;
-                font-weight: 550;
+                font-weight: 500;
                 color: #404040;
                 text-decoration: none;
                 text-align: center;
@@ -134,37 +129,50 @@
                 
             }
             #box{
-                width: 28%;
-                height: 54%;
+                width: 20%;
+                height: 95%;
                 background-color:white;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                border-radius:50px;
+                border-radius:35px;
+                display: flex; justify-content: center; align-items: center;
                 
             }
             .heading{
                 font-family:"roboto";
-                font-size:50px;
+                font-size:43px;
                 font-weight:300;
                 color:black;    
-                margin-top:50px;
+                margin-top:20px;
+                padding-bottom:0px;
+                padding-top:10px;
+            }
+            .heading2{
+                font-family:"roboto";
+                font-size:24px;
+                font-weight:400;
+                color:black;    
+                margin-top:0px;
+                text-align:left;
+                padding-top:4px;
+                padding-bottom:1px;
+                padding-left:50px;
             }
             #box a{
                 background-color: #21c1b9;
                 border-radius:40px;
-                padding: 18px 30px;
-                margin-top:20px;
                 display:inline-block;
                 color:white;
                 font-family:"roboto";
-                font-size:32px;
+                font-size:23px;
                 font-weight:500;
-                width:400px;
+                width:283px;
                 opacity:0.90;
                 transition:0.5s;
+                padding:10px 0px;
             }
             #box a:hover{
                 opacity:1;
-                color:rgb(45,45,45);
+                color:rgb(45,45,45);    
             }
             ul{
                 margin:0;
@@ -176,6 +184,61 @@
             a{
                 text-decoration: none;
             }
+            table{
+                
+            }
+            .input{
+                background-color:#f1ecec;
+                border-radius: 18px;
+                font-size: 20px;
+                border:5px;
+                width:265px;
+                padding:10px;
+                font-family:"roboto";
+                outline:none;
+                font-weight:400;
+            }
+
+            .submit{
+                background-color:#21c1b9;
+                border-radius: 50px;
+                font-size: 23px;
+                border:5px;
+                width:285px;
+                padding:10px;
+                font-family:"roboto";
+                outline:none;
+            
+                color:white;
+                border-top:50px;
+                font-weight:500;
+                opacity:0.90;
+                transition:0.5s;    
+            }
+            
+            .submit:hover{
+                opacity:1;
+                color:rgb(45,45,45);
+            }
+            #box button{
+                background-color: #21c1b9;
+                border-radius:40px;
+                padding: 10px 0px;
+                display:inline-block;
+                color:white;
+                font-family:"roboto";
+                font-size:23px;
+                font-weight:500;
+                width:283px;
+                opacity:0.90;
+                transition:0.5s;
+                border:none;
+            }
+            #box button:hover{
+                opacity:1;
+                color:rgb(45,45,45);
+            }
+
         </style>
     </head>
     <body >
@@ -189,21 +252,47 @@
                 <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
-                <a href="php/logout.php" style="margin-left:150px;">LOG OUT</a>
+            <a href="login.php">APPOINTMENTS</a>
             </div>
         </header>
         <div id="blank"></div>
         <div id="page">
             <div id="box">
-                <p class="heading">Welcome Back,<br> <?php echo $_SESSION["user_name"];?></p>
-                <ul>    
-                    <li>
-                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"myappointments_client.php";}else{echo"appointments_doctor_view.html";}?>" ><?php if($_SESSION['user_type']=='patient'){echo"MY APPOINTMENTS";}else{echo"VIEW SCHEDULE";}?></a>
-                    </li>
-                    <li>
-                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"appointments_client_view.php";}else{echo"schedule.php";}?>"><?php if($_SESSION['user_type']=='patient'){echo"BOOK APPOINTMENT";}else{echo"SET SCHEDULE";}?></a>
-                    </li>
-                </ul>
+                <table>
+                    <tr><td class="heading" >Appointment Details</td></tr>
+                    <form action="reschedule.php" method="POST" onsubmit="return validation()">
+                        <?php
+                            $appt_id=$_POST['link'];
+                            $db = new mysqli("localhost","root","","dental");
+                            if ($db->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+                            $session_id=$_SESSION['user_id'];
+                            $stmt=$db->query("SELECT * FROM appointmentslots WHERE SlotID=$appt_id")->fetch_assoc();
+                            $dr_id=$stmt['DoctorID'];
+                            $stmt2=$db->query("SELECT * FROM locations where user_id=$dr_id")->fetch_assoc();
+                            $dr_name=$stmt2['doctor_name'];
+                            if($stmt2['clinic']==1){
+                                $clinic = "Jurong East Clinic";
+                            }
+                            else if($stmt2['clinic']==2){
+                                $clinic = "Bishan Clinic";
+                            }
+                            $adate=$stmt['AppointmentDate'];
+                            $atime= $startTime = DateTime::createFromFormat('H:i:s', $stmt['StartTime'])->format('g:i A');
+                            $ctype=$stmt['ConsultType'];
+                            $comments=$stmt['Comments'];
+                        ?>
+                        <tr><td class="heading2">Clinic Location</td></tr><tr><td><input type="text" class ="input" value="<?php echo $clinic; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Doctor</td></tr><tr><td><input type="text" class ="input" value="<?php echo $dr_name; ?>" disabled></td></tr>
+                        <tr><td  class="heading2">Date</td></tr><tr><td><input type="text" class ="input" value="<?php echo $adate; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Appointment Time</td></tr><tr><td><input type="text" class ="input" value="<?php echo $atime; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Type of consult</td></tr><tr><td><input type="text" class ="input" value="<?php echo $ctype; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="1" cols="50" class="input" name="comment" style="resize: none;" disabled><?php echo $comments ?></textarea></tr></td>
+                        <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="RESCHEDULE"></td></tr>
+                    </form>
+                        <tr><td><form action="php/cancel.php" method="POST"><button type="submit"name="link" value="<?php echo $appt_id?>">CANCEL</button></form></tr></td>
+                </table>
             </div>
         </div>
 

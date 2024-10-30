@@ -104,7 +104,7 @@
             #box{
                 background-color: white;
                 border-radius: 20px;
-                width:25%;  
+                width:21%;  
                 height:85%;
                 margin: auto;
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -130,7 +130,7 @@
             .textarea{
                 width: 300px;
                 height: 40px;
-                border-radius: 20px;
+                border-radius: 13px;
                 background-color: #f1ecec;
                 border: none;
                 font-size: 23px;

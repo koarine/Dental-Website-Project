@@ -344,7 +344,7 @@
 
                         </script>
                         </select></tr></td>
-                        <tr><td class="heading2">Type of consult</td></tr><tr><td><select id="clinic" class ="input" name ="ctype"style ="width:285px; appearance:none;" required><option value ="Scaling">Scaling & Polishing</option><option value ="Teeth Whitening">Teeth Whitening</option><option value ="Metal Braces">Metal Braces</option><option value ="Ceramic Braces">Ceramic Braces</option><option value ="Invisalign">Invisalign</option></select></td></tr>
+                        <tr><td class="heading2">Type of consult</td></tr><tr><td><select id="clinic" class ="input" name ="ctype"style ="width:285px; appearance:none;" required><option value ="Scaling & Polishing">Scaling & Polishing</option><option value ="Teeth Whitening">Teeth Whitening</option><option value ="Metal Braces">Metal Braces</option><option value ="Ceramic Braces">Ceramic Braces</option><option value ="Invisalign">Invisalign</option></select></td></tr>
                         <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"></textarea></tr></td>
                         <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="CONFIRM"></td></tr>
                     </form>

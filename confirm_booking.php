@@ -254,13 +254,24 @@
                     $stmt=$db->query("SELECT * FROM  appointmentslots WHERE SlotID=$SlotID")->fetch_assoc();
                     if ($stmt['IsBooked']==0){
                         $db->query("UPDATE appointmentslots SET IsBooked=1,PatientID=$PatientID,ConsultType='$ctype',Comments='$comments' WHERE SlotID=$SlotID");
-                        echo"
-                            <tr><td class='heading' >Booking Confirmed</td></tr>
-                            <tr><td class='heading' >✔️</td></tr>
-                            <form action='' >
-                            <tr style='line-height:80px;'><td><input type='submit' class = 'submit' value='Back to appointments page'></td></tr>
-                            </form>
-
+                        echo "
+                            <tr><td class='heading'>Booking Confirmed</td></tr>
+                            <tr><td class='heading'>✔️</td></tr>
+                            <tr style='line-height:50px;'>
+                                <td>
+                                    <form action='appointments.php'>
+                                        <input type='submit' class='submit' value='Back to appointments page'>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr style='line-height:50px;'>
+                                <td>
+                                    <form action='apptdetails.php' method='POST'>
+                                        <input type='hidden' name='link' value='" . $SlotID . "'>
+                                        <input type='submit' class='submit' value='View details'>
+                                    </form>
+                                </td>
+                            </tr>
                         ";
                     }
                     else{
