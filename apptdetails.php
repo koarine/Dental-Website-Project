@@ -288,6 +288,7 @@
                         <tr><td  class="heading2">Date</td></tr><tr><td><input type="text" class ="input" value="<?php echo $adate; ?>" disabled></td></tr>
                         <tr><td class="heading2">Appointment Time</td></tr><tr><td><input type="text" class ="input" value="<?php echo $atime; ?>" disabled></td></tr>
                         <tr><td class="heading2">Type of consult</td></tr><tr><td><input type="text" class ="input" value="<?php echo $ctype; ?>" disabled></td></tr>
+                        <input type="hidden" name="link" value="<?php echo $appt_id?>">
                         <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="1" cols="50" class="input" name="comment" style="resize: none;" disabled><?php echo $comments ?></textarea></tr></td>
                         <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="RESCHEDULE"></td></tr>
                     </form>
