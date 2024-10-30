@@ -110,7 +110,7 @@ if (isset($_SESSION['user_type'])) {
             #box{
                 background-color: #21c1b9;
                 border-radius: 20px;
-                width:55%;  
+                width:48%;  
                 height:75%;
                 margin: auto;
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -136,7 +136,8 @@ if (isset($_SESSION['user_type'])) {
                 margin: auto;
                 text-align: left;
                 font-family: "Roboto";
-                color: black
+                color: black;
+                
                 
             }
             .boxtitle{
