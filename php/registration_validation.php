@@ -18,6 +18,7 @@
     else{
         $hashed_password=password_hash($password,PASSWORD_BCRYPT);
         $db->query("INSERT INTO users VALUES (NULL,'$username','$hashed_password','patient','$name','$email')");
+        $_SESSION['reg_success']=true;
         header("Location: ../login.php");
         exit();
     }
