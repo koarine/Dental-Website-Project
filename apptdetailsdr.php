@@ -1,11 +1,13 @@
 <?php
     session_start();
     if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='doctor' )){
+        if(!($_SESSION['user_type']=='patient')){
             header("Location: login.php");
             exit();
         }
     }
+    $appt_id = $_POST['link']
+    
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +72,7 @@
             }
             #right-header a{
                 font-size: 23px;
-                font-weight: 550;
+                font-weight: 500;
                 color: #404040;
                 text-decoration: none;
                 text-align: center;
@@ -127,8 +129,8 @@
                 
             }
             #box{
-                width: 21%;
-                height: 85%;
+                width: 20%;
+                height: 95%;
                 background-color:white;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 border-radius:35px;
@@ -137,40 +139,40 @@
             }
             .heading{
                 font-family:"roboto";
-                font-size:50px;
+                font-size:43px;
                 font-weight:300;
                 color:black;    
-                margin-top:30px;
-                padding-bottom:15px;
-                padding-top:20px;
+                margin-top:20px;
+                padding-bottom:0px;
+                padding-top:10px;
             }
             .heading2{
                 font-family:"roboto";
-                font-size:23px;
+                font-size:24px;
                 font-weight:400;
                 color:black;    
                 margin-top:0px;
                 text-align:left;
-                padding-top:7px;
-                padding-bottom:2px;
+                padding-top:4px;
+                padding-bottom:1px;
+                padding-left:50px;
             }
             #box a{
                 background-color: #21c1b9;
                 border-radius:40px;
-                padding: 18px 30px;
-                margin-top:20px;
                 display:inline-block;
                 color:white;
                 font-family:"roboto";
-                font-size:32px;
+                font-size:23px;
                 font-weight:500;
-                width:400px;
+                width:283px;
                 opacity:0.90;
                 transition:0.5s;
+                padding:10px 0px;
             }
             #box a:hover{
                 opacity:1;
-                color:rgb(45,45,45);
+                color:rgb(45,45,45);    
             }
             ul{
                 margin:0;
@@ -211,14 +213,32 @@
                 border-top:50px;
                 font-weight:500;
                 opacity:0.90;
-                transition:0.5s;
+                transition:0.5s;    
             }
             
             .submit:hover{
                 opacity:1;
                 color:rgb(45,45,45);
             }
-            
+            #box button{
+                background-color: #21c1b9;
+                border-radius:40px;
+                padding: 10px 0px;
+                display:inline-block;
+                color:white;
+                font-family:"roboto";
+                font-size:23px;
+                font-weight:500;
+                width:283px;
+                opacity:0.90;
+                transition:0.5s;
+                border:none;
+            }
+            #box button:hover{
+                opacity:1;
+                color:rgb(45,45,45);
+            }
+
         </style>
     </head>
     <body >
@@ -232,52 +252,49 @@
                 <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
-                <a href="php/logout.php" style="margin-left:150px;">LOG OUT</a>
+            <a href="login.php">APPOINTMENTS</a>
             </div>
         </header>
         <div id="blank"></div>
         <div id="page">
             <div id="box">
                 <table>
-                    <tr><td class="heading" >Set Schedule</td></tr>
-                    <form action="php/generate_slots.php" method="POST" onsubmit="return validation()">
-                        <tr><td class="heading2">Start Date: </td></tr><tr><td><input type="date" class ="input" name="start_date" required id="1"></td></tr>
-                        <tr><td class="heading2">End Date: </td></tr><tr><td><input type="date"  class ="input" name="end_date" id="2" required></td></tr>
-                        <tr><td  class="heading2">Start Time: </td></tr><tr><td><input type="time" class ="input" name="start_time" id="3" required></td></tr>
-                        <tr><td class="heading2">End Time: </td></tr><tr><td><input type="time" class ="input" name="end_time" id="4" required></td></tr>
-                        <tr><td class="heading2">Time Interval (minutes): </td></tr><tr><td><input type="number" class ="input" id="5" name="time_interval" required></td></tr>
-                        <tr style="line-height:90px;"><td><input type="submit" class = "submit" value="CREATE SLOTS"></td></tr>
+                    <tr><td class="heading" >Appointment Details</td></tr>
+                    <form action="reschedule.php" method="POST" onsubmit="return validation()">
+                        <?php
+                            $appt_id=$_POST['link'];
+                            $db = new mysqli("localhost","root","","dental");
+                            if ($db->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+                            $session_id=$_SESSION['user_id'];
+                            $stmt=$db->query("SELECT * FROM appointmentslots WHERE SlotID=$appt_id")->fetch_assoc();
+                            $dr_id=$stmt['DoctorID'];
+                            $stmt2=$db->query("SELECT * FROM locations where user_id=$dr_id")->fetch_assoc();
+                            $p_id=$stmt['PatientID'];
+                                $stmt3=$db->query("SELECT * FROM users WHERE user_id=$p_id")->fetch_assoc();
+                                $p_name = $stmt3['user_name'];
+                            if($stmt2['clinic']==1){
+                                $clinic = "Jurong East Clinic";
+                            }
+                            else if($stmt2['clinic']==2){
+                                $clinic = "Bishan Clinic";
+                            }
+                            $adate=$stmt['AppointmentDate'];
+                            $atime= $startTime = DateTime::createFromFormat('H:i:s', $stmt['StartTime'])->format('g:i A');
+                            $ctype=$stmt['ConsultType'];
+                            $comments=$stmt['Comments'];
+                        ?>
+                        <tr><td class="heading2">Clinic Location</td></tr><tr><td><input type="text" class ="input" value="<?php echo $clinic; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Patient</td></tr><tr><td><input type="text" class ="input" value="<?php echo $p_name; ?>" disabled></td></tr>
+                        <tr><td  class="heading2">Date</td></tr><tr><td><input type="text" class ="input" value="<?php echo $adate; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Appointment Time</td></tr><tr><td><input type="text" class ="input" value="<?php echo $atime; ?>" disabled></td></tr>
+                        <tr><td class="heading2">Type of consult</td></tr><tr><td><input type="text" class ="input" value="<?php echo $ctype; ?>" disabled></td></tr>
+                        <input type="hidden" name="link" value="<?php echo $appt_id?>">
+                        <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="1" cols="50" class="input" name="comment" style="resize: none;" disabled><?php echo $comments ?></textarea></tr></td>
+                        <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="RESCHEDULE"></td></tr>
                     </form>
-                    <script type="text/javascript"> 
-                        var startdate = document.getElementById("1")
-                        var enddate = document.getElementById("2")
-                        var starttime = document.getElementById("3")
-                        var endtime = document.getElementById("4")
-                        var timeinterval = document.getElementById("5")
-                        
-                        function validation(){
-                            var date = new Date();
-                            var startdate_o = new Date(startdate.value)
-                            var enddate_o = new Date(enddate.value)
-                            if ((startdate_o < date)||(enddate_o < date)) {
-                                alert("Error : Date must be tommorrow onwards")
-                                return false
-                            }
-                            if(enddate_o<startdate_o){
-                                alert("Error : Start date cannot be later than end date")
-                                return false
-                            }
-                            if(starttime.value>endtime.value){
-                                alert("Error : Start time cannot be later than end time")
-                                return false
-                            }
-                            if(timeinterval.value<=0){
-                                alert("Error : Invalid time value! Time interval must be a postive integer")
-                                return false
-                            }
-                            return true;
-                        }
-                    </script>
+                        <tr><td><form action="php/cancel.php" method="POST"><button type="submit"name="link" onclick="confirm('Are you sure you want to cancel?')" value="<?php echo $appt_id?>">CANCEL</button></form></tr></td>
                 </table>
             </div>
         </div>

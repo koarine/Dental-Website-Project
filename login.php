@@ -6,6 +6,12 @@ if (isset($_SESSION['user_type'])) {
         exit();
     }
 }
+if(isset($_SESSION['reg_success'])){
+    if($_SESSION['reg_success']==true){
+        echo '<script>alert("Registration successful ✔️");</script>';
+        unset($_SESSION['reg_success']);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

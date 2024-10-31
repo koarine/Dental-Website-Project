@@ -198,7 +198,7 @@
                 <p class="heading">Welcome Back,<br> <?php echo $_SESSION["user_name"];?></p>
                 <ul>    
                     <li>
-                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"myappointments_client.php";}else{echo"appointments_doctor_view.html";}?>" ><?php if($_SESSION['user_type']=='patient'){echo"MY APPOINTMENTS";}else{echo"VIEW SCHEDULE";}?></a>
+                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"myappointments_client.php";}else{echo"appointments_doctor_view.php";}?>" ><?php if($_SESSION['user_type']=='patient'){echo"MY APPOINTMENTS";}else{echo"VIEW SCHEDULE";}?></a>
                     </li>
                     <li>
                         <a href ="<?php if($_SESSION['user_type']=='patient'){echo"appointments_client_view.php";}else{echo"schedule.php";}?>"><?php if($_SESSION['user_type']=='patient'){echo"BOOK APPOINTMENT";}else{echo"SET SCHEDULE";}?></a>
