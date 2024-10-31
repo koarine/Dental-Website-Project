@@ -1,0 +1,348 @@
+html{height: 100%;
+    min-height: 1080x;
+    padding:0;
+    border:0;
+    min-width: 1850px;
+}
+body{background-color: white;
+    font-family:Verdana, Arial, sans-serif;
+    height:100%;
+    margin:0 ;
+    overflow:hidden;
+}
+p{
+    border:0;
+    margin:0;
+}
+header{
+    background-color: #21c1b9;
+    height:15%;
+    width: 100%;
+    border: 0;
+    position:fixed;
+    min-width: 1050px;
+    min-height:138px;
+    z-index: 1;
+}   
+#left-header a{
+    height:100%;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mid-header a{
+    font-size: 23px;
+    margin-left: 3%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    color: white;
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+}
+#mid-header a:hover{
+    font-size: 23px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow: 2px 3px 3px #404040;
+    color:#404040;
+}
+#right-header a{
+    font-size: 23px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    color: #404040;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow: 2px 3px 3px #404040;
+}
+#right-header a:hover{
+    font-size: 23px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    color: #21c1b9;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow: 2px 4px 4px #404040;
+}
+#left-header{
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    min-width: 200px;
+}
+#mid-header{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+#right-header{
+    width: 17.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+    text-align: center;
+    min-width: 250px;
+}
+
+/* ====== ANIMATIONS ===== */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ================================================ First page ================================================ */
+#page1 {
+    height:100%;
+    width:100%;
+    background-color: rgb(238, 255, 235);
+    min-height:900px;
+}
+#page1-maintext {
+    text-align: center;
+    /* font-size: 70px; */
+    padding-top: 10%;
+    margin-bottom: -50px;
+    font-style: normal;
+    color: #115278;
+}
+#page1-maintext h1{
+    font-family: "Roboto", sans-serif;
+    font-size: 92px;
+    font-weight: 700;
+    font-style: italic;
+    animation: fadeIn ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+#page1-subtext {
+    text-align: center;
+    font-size: 35px;
+    padding: 0 10%;
+    color: #404040;
+    animation: fadeIn ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+#page1-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+.page1-image-container {
+    position: relative;
+    transition: 0.1s ease;
+}
+.page1-img {
+    display: block;
+    border: #404040 2px solid;
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.page1-image-container:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease;
+}
+.page1-image-container:hover .page1-img {
+    box-shadow: 
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.page1-doctor-name {
+    position: absolute;
+    border-radius: 0 0 60px 60px;
+    bottom: 0;
+    left: 0;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    margin-left: 5%;
+    opacity: 0;
+    transition: 0.1s ease;
+}
+.page1-image-container:hover .page1-doctor-name {
+    opacity: 1;
+    transition: 0.1s ease;
+}
+#page1-image1 {
+    animation: slideIn ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+#page1-image2 {
+    animation: slideIn ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1.25s;
+    opacity: 0;
+}
+#page1-image3 {
+    animation: slideIn ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+/* h1{
+    font-weight: 700;
+    font-family: Roboto, sans-serif;
+    font-style:normal;
+    margin-top:30px;
+    margin-bottom:10px;
+    font-size:75px
+} */
+h2{
+    font-weight: 600;
+    font-family: roboto;
+    font-style:normal;
+    font-size:30px;
+    line-height:38px;
+}
+span{
+    font-weight: 600;
+    font-family: roboto;
+    font-style:normal;
+    font-size:25px;
+    line-height:35px;
+    color: #404040;
+    margin-left:10px;
+}
+.img{
+    border-radius: 45px;
+}
+.appointment-button {
+    font-size: 23px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 550;
+    color: white;
+    background-color: #115278;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    padding: 20px 15px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+.appointment-button:hover {
+    color: #404040;
+    background-color: #21c1b9;
+}
+
+/* ================================================ Second page ================================================ */
+.page {
+    height:85%;
+    width:100%;
+    min-height:700px;
+}
+#page2 {
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+#page2-image {
+    padding-left: 7.5%;
+}
+#page2-text {
+    padding: 0 7.5% 0 3%;
+}
+#page2-text-header {
+    font-size: 50px;
+
+    color: #115278;
+    margin-top: -50px;
+}
+#page2-text-subheader {
+    font-size: 20px;
+    color: #404040;
+}
+#page2-contact {
+    display: flex;
+    align-items: center;
+}
+#page3 {
+    background-color: rgb(238, 255, 235);
+    display: flex;
+    align-items: center;
+}
+#page3-image {
+    padding-right: 7.5%;
+}
+#page3-text {
+    padding: 0 3% 0 7.5%;
+}
+#page3-text-header {
+    font-size: 50px;
+    color: #115278;
+    margin-top: -50px;
+}
+#page3-text-subheader {
+    font-size: 20px;
+    color: #404040;
+}
+#page3-contact {
+    display: flex;
+    align-items: center;
+}
+
+#page4 {
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+#page4-image {
+    padding-left: 7.5%;
+}
+#page4-text {
+    padding: 0 7.5% 0 3%;
+}
+#page4-text-header {
+    font-size: 50px;
+    color: #115278;
+    margin-top: -50px;
+}
+#page4-text-subheader {
+    font-size: 20px;
+    color: #404040;
+}
+#page4-contact {
+    display: flex;
+    align-items: center;
+}
