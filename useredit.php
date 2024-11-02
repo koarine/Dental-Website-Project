@@ -204,6 +204,9 @@
                             $stmt2 = $db->query("SELECT * FROM locations where user_id=$user_id")->fetch_assoc();
                             $clinic=$stmt2['clinic'];
                         }
+                        else{
+                            $clinic=0;
+                        }
                         ?>
                         <tr style="height: 70px;">
                             <td class="boxtitle">EDIT USER</td>
