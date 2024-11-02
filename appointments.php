@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='patient' || $_SESSION['user_type']=='doctor' )){
+        if(!($_SESSION['user_type']=='patient' || $_SESSION['user_type']=='doctor' || $_SESSION['user_type']=='admin' )){
             header("Location: login.php");
             exit();
         }
@@ -10,6 +10,36 @@
         if($_SESSION['cancel']==true){
             echo '<script>alert("Booking Successfully Cancelled ✔️");</script>';
             unset($_SESSION['cancel']);
+        }
+    }
+    if(isset($_SESSION['adminreg_success'])){
+        if($_SESSION['adminreg_success']==true){
+            echo '<script>alert("Registration Success ✔️");</script>';
+            unset($_SESSION['adminreg_success']);
+        }
+    }
+    if(isset($_SESSION['adminreg_username_exists'])){
+        if($_SESSION['adminreg_username_exists']==true){
+            echo '<script>alert("Registration Error : Username already exists ❌");</script>';
+            unset($_SESSION['adminreg_username_exists']);
+        }
+    }
+    if(isset($_SESSION['delete_user'])){
+        if($_SESSION['delete_user']==true){
+            echo '<script>alert("User Deleted Successfully ✔️");</script>';
+            unset($_SESSION['delete_user']);
+        }
+    }
+    if(isset($_SESSION['adminedit_success'])){
+        if($_SESSION['adminedit_success']==true){
+            echo '<script>alert("User Edited Successfully ✔️");</script>';
+            unset($_SESSION['adminedit_success']);
+        }
+    }
+    if(isset($_SESSION['adminedit_success'])){
+        if($_SESSION['adminedit_username_exists']==true){ 
+            echo '<script>alert("User Edit Error : Username exists ❌");</script>';
+            unset($_SESSION['adminedit_username_exists']);
         }
     }
 ?>
@@ -198,10 +228,10 @@
                 <p class="heading">Welcome Back,<br> <?php echo $_SESSION["user_name"];?></p>
                 <ul>    
                     <li>
-                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"myappointments_client.php";}else{echo"appointments_doctor_view.php";}?>" ><?php if($_SESSION['user_type']=='patient'){echo"MY APPOINTMENTS";}else{echo"VIEW SCHEDULE";}?></a>
+                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"myappointments_client.php";}else if($_SESSION['user_type']=='doctor'){echo"appointments_doctor_view.php";}else{echo"adminreg.php";}?>" ><?php if($_SESSION['user_type']=='patient'){echo"MY APPOINTMENTS";}else if($_SESSION['user_type']=='doctor'){echo"VIEW SCHEDULE";}else{echo"CREATE ACCOUNTS";}?></a>
                     </li>
                     <li>
-                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"appointments_client_view.php";}else{echo"schedule.php";}?>"><?php if($_SESSION['user_type']=='patient'){echo"BOOK APPOINTMENT";}else{echo"SET SCHEDULE";}?></a>
+                        <a href ="<?php if($_SESSION['user_type']=='patient'){echo"appointments_client_view.php";}else if($_SESSION['user_type']=='doctor'){echo"schedule.php";}else{echo"usermanagement.php";}?>"><?php if($_SESSION['user_type']=='patient'){echo"BOOK APPOINTMENT";}else if($_SESSION['user_type']=='doctor'){echo"SET SCHEDULE";}else{echo"MANAGE USERS";}?></a>
                     </li>
                 </ul>
             </div>

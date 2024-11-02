@@ -301,8 +301,8 @@
                             $stmt = $db->query("SELECT * FROM  appointmentslots WHERE DoctorID=$session_id AND IsBooked=1");
                             if ($stmt->num_rows == 0) {
                                 echo "<tr><td><p>😔</p></td></tr>
-                                        <tr><td><p>You have no appointments</p></td></tr>
-                                        <tr><td><a href='appointments_client_view.php'>BOOK APPOINTMENT</a></tr></td>
+                                        <tr><td><p>You have no upcoming patients</p></td></tr>
+                                        
                                         <tr><td><br></tr></td>
                                         <tr><td><br></tr></td>";
                                 exit();

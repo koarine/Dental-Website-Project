@@ -240,51 +240,10 @@
         <div id="page">
             <div id="box">
                 <table>
-                    <tr>
-                        <td class="heading" >
-                            Appointment Booking
-                        </td>
-                    </tr>
+                    <tr><td class="heading" >Appointment Booking</td></tr>
                     <form action="confirm_booking.php" method="POST" onsubmit="return validation()">
-                        <tr>
-                            <td class="heading2">
-                                Clinic Location:
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select 
-                                id="clinic" 
-                                class ="input" 
-                                name ="clinic"
-                                style ="width:285px; appearance:none;" 
-                                onchange = "time_update()" 
-                                required
-                                >
-                                    <option value ="Jurong East Clinic">
-                                        Jurong East Clinic
-                                    </option>
-                                    <option value ="Bishan Clinic">
-                                        Bishan Clinic
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="heading2">
-                                Doctor Preference
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select 
-                                id="doctor" 
-                                class ="input" 
-                                name ="doctor" 
-                                onchange = "time_update()" 
-                                style ="width:285px; appearance:none;" 
-                                required
-                                >
+                        <tr><td class="heading2">Clinic Location:</td></tr><tr><td><select id="clinic" class ="input" name ="clinic"style ="width:285px; appearance:none;" onchange = "multifunc()" required><option value ="Jurong East Clinic">Jurong East Clinic</option><option value ="Bishan Clinic">Bishan Clinic</option></select></td></tr>
+                        <tr><td class="heading2">Doctor Preference</td></tr><tr><td><select id="doctor" class ="input" name ="doctor" onchange = "time_update()" style ="width:285px; appearance:none;" required>
                         <?php 
                             $db = new mysqli("localhost","root","","dental");
                             if ($db->connect_error) {
@@ -300,7 +259,13 @@
                                     for (var i = 0; i < items.length; i++) {
                                         items[i].hidden = true
                                     }
-                            document.getElementById("clinic").addEventListener("change",()=>{
+                            function multifunc(){
+                                time_update()
+                                validationchange()
+
+                            }
+                            window.onload = validationchange()
+                            function validationchange(){
                                 document.getElementById("doctor").value=""
                                 if (document.getElementById("clinic").value=="Jurong East Clinic"){
                                     var items = document.getElementsByClassName("2");
@@ -323,7 +288,7 @@
                                     }
                                 }
                                 return
-                            })  
+                            }
                         </script>
                         </select></td></tr>
                         <tr><td  class="heading2">Date Preference</td></tr><tr><td><input type="date" class ="input" onchange = "time_update()" name="date" id="dateInput" required></td></tr>
@@ -385,71 +350,15 @@
 
                         </script>
                         </select></tr></td>
-                        <tr>
-                            <td class="heading2">
-                                Type of consult
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select 
-                                id="clinic" 
-                                class ="input" 
-                                name ="ctype"
-                                style ="width:285px; 
-                                        appearance:none;" 
-                                required
-                                >
-                                    <option value ="Scaling & Polishing">
-                                        Scaling & Polishing
-                                    </option>
-                                    <option value ="Teeth Whitening">
-                                        Teeth Whitening
-                                    </option>
-                                    <option value ="Metal Braces">
-                                        Metal Braces
-                                    </option>
-                                    <option value ="Ceramic Braces">
-                                        Ceramic Braces
-                                    </option>
-                                    <option value ="Invisalign">
-                                        Invisalign
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="heading2">
-                                Comments
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <textarea 
-                                rows="2" 
-                                cols="50" 
-                                class="input" 
-                                name="comment" 
-                                style="resize: none;"
-                                >
-                                </textarea>
-                            </td>
-                        </tr>
-                        <tr style="line-height:50px;">
-                            <td>
-                                <input 
-                                type="submit" 
-                                class = "submit" 
-                                value="CONFIRM"
-                                >
-                            </td>
-                        </tr>
+                        <tr><td class="heading2">Type of consult</td></tr><tr><td><select id="" class ="input" name ="ctype"style ="width:285px; appearance:none;" required><option value ="Scaling & Polishing">Scaling & Polishing</option><option value ="Teeth Whitening">Teeth Whitening</option><option value ="Metal Braces">Metal Braces</option><option value ="Ceramic Braces">Ceramic Braces</option><option value ="Invisalign">Invisalign</option></select></td></tr>
+                        <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"></textarea></tr></td>
+                        <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="CONFIRM"></td></tr>
                     </form>
                     <script type="text/javascript">
                         var date = new Date();
                         function validation(){
-                            var appt = document.getElementById("3");
-                            var apptdate = new Date(appt.value);
+                            var appt = document.getElementById("3")
+                            var apptdate = new Date(appt.value)
                             if(apptdate<=date){
                                 alert("Error : Appointment date must be later tommorow onwards")
                                 return false;

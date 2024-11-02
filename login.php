@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_type'])) {
-    if(($_SESSION['user_type']=='patient' || $_SESSION['user_type']=='doctor' )){
+    if(($_SESSION['user_type']=='patient' || $_SESSION['user_type']=='doctor' || $_SESSION['user_type']=='admin' )){
         header("Location: appointments.php");
         exit();
     }
