@@ -369,6 +369,7 @@
                             <option value ="Invisalign"<?php echo ($ctype =="Invisalign") ? 'selected' : ''; ?>>Invisalign</option></select></td></tr>
                         <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"><?php echo $comments;?></textarea></tr></td>
                         <input type="hidden" name="link" value="<?php echo $appt_id?>">
+                        <input type="hidden" name="action" value="reschedule">
                         <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="CONFIRM"></td></tr>
                     </form>
                     <script type="text/javascript">
