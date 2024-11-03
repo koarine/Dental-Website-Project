@@ -242,8 +242,37 @@
                 <table>
                     <tr><td class="heading" >Appointment Booking</td></tr>
                     <form action="confirm_booking.php" method="POST" onsubmit="return validation()">
-                        <tr><td class="heading2">Clinic Location:</td></tr><tr><td><select id="clinic" class ="input" name ="clinic"style ="width:285px; appearance:none;" onchange = "multifunc()" required><option value ="Jurong East Clinic">Jurong East Clinic</option><option value ="Bishan Clinic">Bishan Clinic</option></select></td></tr>
-                        <tr><td class="heading2">Doctor Preference</td></tr><tr><td><select id="doctor" class ="input" name ="doctor" onchange = "time_update()" style ="width:285px; appearance:none;" required>
+                        <tr>
+                            <td class="heading2">Clinic Location:</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select 
+                                id="clinic" 
+                                class ="input" 
+                                name ="clinic"
+                                style ="width:285px; appearance:none;" 
+                                onchange = "multifunc()" 
+                                required
+                                >
+                                    <option value ="Jurong East Clinic">Jurong East Clinic</option>
+                                    <option value ="Bishan Clinic">Bishan Clinic</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="heading2">Doctor Preference</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select 
+                                id="doctor" 
+                                class ="input" 
+                                name ="doctor" 
+                                onchange = "time_update()" 
+                                style ="width:285px; appearance:none;" 
+                                required
+                                >
                         <?php 
                             $db = new mysqli("localhost","root","","dental");
                             if ($db->connect_error) {
@@ -291,7 +320,21 @@
                             }
                         </script>
                         </select></td></tr>
-                        <tr><td  class="heading2">Date Preference</td></tr><tr><td><input type="date" class ="input" onchange = "time_update()" name="date" id="dateInput" required></td></tr>
+                        <tr>
+                            <td class="heading2">Date Preference</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input 
+                                type="date" 
+                                class ="input" 
+                                onchange = "time_update()" 
+                                name="date" 
+                                id="dateInput" 
+                                required
+                                >
+                            </td>
+                        </tr>
                         <script>
                             function setMinDateToTomorrow() {
                                 const dateInput = document.getElementById('dateInput');
@@ -308,51 +351,92 @@
 
                             setMinDateToTomorrow();
                         </script>
-                        <tr><td class="heading2">Appointment Time</td></tr><tr><td><select id="time" class ="input" name ="time" style ="width:285px; appearance:none;" required>
-                        <?php 
-                            $stmt = $db->query("SELECT SlotID,DoctorID,StartTime,EndTime,AppointmentDate FROM  appointmentslots WHERE IsBooked=0");
-                            while($row = $stmt ->fetch_assoc()){
-                                $startTime = DateTime::createFromFormat('H:i:s', $row['StartTime'])->format('g:i A');
-                                $endTime = DateTime::createFromFormat('H:i:s', $row['EndTime'])->format('g:i A');
-                                echo "<option value='".$row['SlotID']."' class='".$row['DoctorID']." ".$row['AppointmentDate']." bruh"."'>". $startTime . " to " . $endTime ."</option>";
-                            }
-                        ?>
-                        <script>    
-                            var items = document.getElementsByClassName("bruh");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = true
-                                    }
-                            document.getElementById("time").value=""
+                        <tr>
+                            <td class="heading2">Appointment Time</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select 
+                                id="time" 
+                                class ="input" 
+                                name ="time" 
+                                style ="width:285px; appearance:none;" 
+                                required
+                                >
+                                    <?php 
+                                        $stmt = $db->query("SELECT SlotID,DoctorID,StartTime,EndTime,AppointmentDate FROM  appointmentslots WHERE IsBooked=0");
+                                        while($row = $stmt ->fetch_assoc()){
+                                            $startTime = DateTime::createFromFormat('H:i:s', $row['StartTime'])->format('g:i A');
+                                            $endTime = DateTime::createFromFormat('H:i:s', $row['EndTime'])->format('g:i A');
+                                            echo "<option value='".$row['SlotID']."' class='".$row['DoctorID']." ".$row['AppointmentDate']." bruh"."'>". $startTime . " to " . $endTime ."</option>";
+                                        }
+                                    ?>
+                                    <script>    
+                                        var items = document.getElementsByClassName("bruh");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = true
+                                                }
+                                        document.getElementById("time").value=""
 
-                            function time_update(){
-                                    
-                                var dr_id = document.getElementById("doctor").value;
-                                var date = document.getElementById("dateInput").value;
-                                document.getElementById("time").value=""    
-                                var items = document.getElementsByClassName("bruh");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = true
-                                    }
-                                if (dr_id==null || date==""){
-                                    return
-                                }
-                                var concat = dr_id + " " + date 
-                                var items = document.getElementsByClassName(concat);
-                                if (items.length===0){
-                                    var str = "We're Sorry, "+document.getElementById(dr_id).innerText+" has no timeslots available on "+date+ " 😔"
-                                    alert(str)
-                                }
-                                for (var i = 0; i < items.length; i++) {
-                                    items[i].hidden = false
-                                }
-                            }
-                            
-
-                        </script>
-                        </select></tr></td>
-                        <tr><td class="heading2">Type of consult</td></tr><tr><td><select id="" class ="input" name ="ctype"style ="width:285px; appearance:none;" required><option value ="Scaling & Polishing">Scaling & Polishing</option><option value ="Teeth Whitening">Teeth Whitening</option><option value ="Metal Braces">Metal Braces</option><option value ="Ceramic Braces">Ceramic Braces</option><option value ="Invisalign">Invisalign</option></select></td></tr>
-                        <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"></textarea></tr></td>
-                        <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="CONFIRM"></td></tr>
+                                        function time_update(){
+                                                
+                                            var dr_id = document.getElementById("doctor").value;
+                                            var date = document.getElementById("dateInput").value;
+                                            document.getElementById("time").value=""    
+                                            var items = document.getElementsByClassName("bruh");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = true
+                                                }
+                                            if (dr_id==null || date==""){
+                                                return
+                                            }
+                                            var concat = dr_id + " " + date 
+                                            var items = document.getElementsByClassName(concat);
+                                            if (items.length===0){
+                                                var str = "We're Sorry, "+document.getElementById(dr_id).innerText+" has no timeslots available on "+date+ " 😔"
+                                                alert(str)
+                                            }
+                                            for (var i = 0; i < items.length; i++) {
+                                                items[i].hidden = false
+                                            }
+                                        }
+                                    </script>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="heading2">Type of consult</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select 
+                                id="" 
+                                class="input" 
+                                name ="ctype"
+                                style ="width:285px; appearance:none;" 
+                                required
+                                >
+                                    <option value ="Scaling & Polishing">Scaling & Polishing</option>
+                                    <option value ="Teeth Whitening">Teeth Whitening</option>
+                                    <option value ="Metal Braces">Metal Braces</option>
+                                    <option value ="Ceramic Braces">Ceramic Braces</option>
+                                    <option value ="Invisalign">Invisalign</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="heading2">Comments</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"></textarea>
+                            </td>
+                        </tr>
+                        <tr style="line-height:50px;">
+                            <td>
+                                <input type="submit" class = "submit" value="CONFIRM">
+                            </td>
+                        </tr>
                     </form>
                     <script type="text/javascript">
                         var date = new Date();
