@@ -256,6 +256,7 @@
                     $comments = $_POST["comment"];
                     $clinicLocation = $_POST["clinic"];
                     $apptDate = $_POST["date"];
+                    $action = isset($_POST['action']) ? $_POST['action'] : 'booking';
 
                     // get start time and end time of appointment
                     $apptResult = $db->query("SELECT StartTime, EndTime FROM appointmentslots WHERE SlotID = $SlotID");
@@ -309,10 +310,22 @@
                         // get name
                         $name = $_SESSION["user_name"];
                         // email subject
-                        $subject = 'Appointment Booking Confirmed at Radiant Smiles Dental';
+                        
 
-                        // FIX TIME
-                        $message = "Dear $name,\n\n".
+                        if ($action == 'reschedule') {
+                            $subject = 'Your Appointment at Radiant Smiles Dental has been rescheduled';
+                            $message = "Dear $name,\n\n".
+                                    "Your appointment with Radiant Smiles Dental has been rescheduled.\n\nAppointment Details:\n".
+                                    "Clinic Location: $clinicLocation \n".
+                                    "Doctor: $apptDoctor \n".
+                                    "Date: $apptDate \n".
+                                    "Time: $apptTiming \n".
+                                    "Consult Type: $ctype \n".
+                                    "Comments: $comments \n\n".
+                                    "Thank you for choosing Radiant Smiles Dental!\n\nBest regards,\nThe Radiant Smiles Dental Team";
+                        } else {
+                            $subject = 'Appointment Booking Confirmed at Radiant Smiles Dental';
+                            $message = "Dear $name,\n\n".
                                     "Your appointment with Radiant Smiles Dental has been confirmed.\n\nAppointment Details:\n".
                                     "Clinic Location: $clinicLocation \n".
                                     "Doctor: $apptDoctor \n".
@@ -321,6 +334,9 @@
                                     "Consult Type: $ctype \n".
                                     "Comments: $comments \n\n".
                                     "Thank you for choosing Radiant Smiles Dental!\n\nBest regards,\nThe Radiant Smiles Dental Team";
+
+                        }
+                        
                         $headers = 'From: booking@radiantsmilesdental.com.sg'."\r\n".'Reply-To: booking@radiantsmilesdental.com.sg'."\r\n".'X-Mailer: PHP/'.phpversion();
                         
                         mail($to, $subject, $message, $headers, '-ff32ee@localhost');
