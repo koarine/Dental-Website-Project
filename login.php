@@ -41,7 +41,7 @@ if(isset($_SESSION['reg_success'])){
             #mid-header a{
                 font-size: 23px;
                 margin-left: 3%;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -205,7 +205,7 @@ if(isset($_SESSION['reg_success'])){
             <div id="mid-header">
                 <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                 <a href="about.html">ABOUT US</a>
-                <a href="contact.php">CONTACT US</a>
+                <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
                 <a href="login.php">APPOINTMENTS</a>

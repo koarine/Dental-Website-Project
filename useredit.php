@@ -35,7 +35,7 @@
             #mid-header a{
                 font-size: 23px;
                 margin-left: 3%;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -178,7 +178,7 @@
             <div id="mid-header">
                 <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                 <a href="about.html">ABOUT US</a>
-                <a href="contact.php">CONTACT US</a>
+                <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
                 <a href="login.php">APPOINTMENTS</a>
@@ -281,7 +281,7 @@
                                 return false
                             }
                             else{
-                                var regexp = /^[a-zA-Z ]+$/
+                                var regexp = /^[a-zA-Z][a-zA-Z ]*$/
                                 if(!regexp.test(nametext.value)){
                                     alert("name field can only contain spaces and alphabets")
                                     return false
@@ -292,7 +292,7 @@
                                 return false
                             }
                             else{
-                                var regexp = /^[\w-]+@[\w]+(.[\w]+){1,3}$/ 
+                                var regexp = /^[\w-]+@[\w]+(\.[\w]+){1,3}$/ 
                                 if(!regexp.test(email.value)){
                                     alert("email can only contain word characters (hyphen only for name), no more than 4 domain names.")
                                     return false

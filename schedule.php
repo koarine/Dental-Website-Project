@@ -70,7 +70,7 @@
             }
             #right-header a{
                 font-size: 23px;
-                font-weight: 550;
+                font-weight: 500;
                 color: #404040;
                 text-decoration: none;
                 text-align: center;
@@ -229,10 +229,10 @@
             <div id="mid-header">
                 <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                 <a href="about.html">ABOUT US</a>
-                <a href="contact.php">CONTACT US</a>
+                <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
-                <a href="php/logout.php" style="margin-left:150px;">LOG OUT</a>
+                <a href="php/logout.php">APPOINTMENTS</a>
             </div>
         </header>
         <div id="blank"></div>

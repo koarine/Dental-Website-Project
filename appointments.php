@@ -42,6 +42,16 @@
             unset($_SESSION['adminedit_username_exists']);
         }
     }
+    if(isset($_SESSION['sched_success'])){
+        if($_SESSION['sched_success']==true){ 
+            $success = $_SESSION['success'];
+            $fail = $_SESSION['fail'];
+            echo "<script>alert('Schedule Set. $success successful slots entered ✔️ $fail slots clashed ❌.  ');</script>";
+            unset($_SESSION['sched_success']);  
+            unset($_SESSION['success']);
+            unset($_SESSION['fail']);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +102,7 @@
                 align-items: center;
             }
             #mid-header a{
+                font-family: "Roboto", sans-serif;
                 font-size: 23px;
                 margin-left: 3%;
                 font-weight: 550;
@@ -216,7 +227,7 @@
             <div id="mid-header">
                 <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                 <a href="about.html">ABOUT US</a>
-                <a href="contact.php">CONTACT US</a>
+                <a href="contact.html">CONTACT US</a>
             </div>
             <div id="right-header">
                 <a href="php/logout.php" style="margin-left:150px;">LOG OUT</a>

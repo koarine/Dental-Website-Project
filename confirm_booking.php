@@ -273,6 +273,7 @@
                     if ($stmt['IsBooked']==0){
                         if(isset($_POST['link'])){
                             $link = $_POST['link'];
+                            $PatientID=$db->query("SELECT * FROM appointmentslots where SLOTID=$link")->fetch_assoc()['PatientID'];
                             $db->query("UPDATE appointmentslots SET IsBooked=0,PatientID=NULL,ConsultType=NULL,Comments=NULL WHERE SlotID=$link");
                         }
                         $db->query("UPDATE appointmentslots SET IsBooked=1,PatientID=$PatientID,ConsultType='$ctype',Comments='$comments' WHERE SlotID=$SlotID");
@@ -339,7 +340,7 @@
                         
                         $headers = 'From: booking@radiantsmilesdental.com.sg'."\r\n".'Reply-To: booking@radiantsmilesdental.com.sg'."\r\n".'X-Mailer: PHP/'.phpversion();
                         
-                        mail($to, $subject, $message, $headers);
+                        mail($to, $subject, $message, $headers, '-ff32ee@localhost');
                     }
                     else{
                         echo"
