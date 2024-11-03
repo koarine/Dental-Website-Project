@@ -231,7 +231,7 @@
             <div id="mid-header">
                 <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                 <a href="about.html">ABOUT US</a>
-                <a href="contact.html">CONTACT US</a>
+                <a href="contact.php">CONTACT US</a>
             </div>
             <div id="right-header">
             <a href="login.php">APPOINTMENTS</a>
@@ -254,14 +254,38 @@
                     $PatientID = $_SESSION["user_id"];
                     $ctype = $_POST["ctype"];
                     $comments = $_POST["comment"];
+                    $clinicLocation = $_POST["clinic"];
+                    $apptDate = $_POST["date"];
+
+                    // get start time and end time of appointment
+                    $apptResult = $db->query("SELECT StartTime, EndTime FROM appointmentslots WHERE SlotID = $SlotID");
+                    while ($apptRow = $apptResult->fetch_assoc()) {
+                        $startTime = date('g:i A', strtotime($apptRow['StartTime']));
+                        $endTime = date('g:i A', strtotime($apptRow['EndTime']));
+                        $apptTiming = $startTime. " to ". $endTime;
+                    }
+                    
+                    // get doctor name
+                    $dr_id = $_POST["doctor"];
+                    $apptDoctor_stmt = $db->query("SELECT * FROM locations WHERE user_id=$dr_id");
+                    $row = $apptDoctor_stmt->fetch_assoc();
+                    $apptDoctor = $row['doctor_name'];
                     
                     
                     $stmt=$db->query("SELECT * FROM  appointmentslots WHERE SlotID=$SlotID")->fetch_assoc();
                     if ($stmt['IsBooked']==0){
                         $db->query("UPDATE appointmentslots SET IsBooked=1,PatientID=$PatientID,ConsultType='$ctype',Comments='$comments' WHERE SlotID=$SlotID");
                         echo "
-                            <tr><td class='heading'>Booking Confirmed</td></tr>
-                            <tr><td class='heading'>✔️</td></tr>
+                            <tr>
+                                <td class='heading'>
+                                    Booking Confirmed
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='heading'>
+                                    ✔️
+                                </td>
+                            </tr>
                             <tr style='line-height:50px;'>
                                 <td>
                                     <form action='appointments.php'>
@@ -278,6 +302,28 @@
                                 </td>
                             </tr>
                         ";
+
+                        // get email
+                        $stmt = $db->query("SELECT email FROM users WHERE user_id=$PatientID")->fetch_assoc();
+                        $to = $stmt["email"];
+                        // get name
+                        $name = $_SESSION["user_name"];
+                        // email subject
+                        $subject = 'Appointment Booking Confirmed at Radiant Smiles Dental';
+
+                        // FIX TIME
+                        $message = "Dear $name,\n\n".
+                                    "Your appointment with Radiant Smiles Dental has been confirmed.\n\nAppointment Details:\n".
+                                    "Clinic Location: $clinicLocation \n".
+                                    "Doctor: $apptDoctor \n".
+                                    "Date: $apptDate \n".
+                                    "Time: $apptTiming \n".
+                                    "Consult Type: $ctype \n".
+                                    "Comments: $comments \n\n".
+                                    "Thank you for choosing Radiant Smiles Dental!\n\nBest regards,\nThe Radiant Smiles Dental Team";
+                        $headers = 'From: booking@radiantsmilesdental.com.sg'."\r\n".'Reply-To: booking@radiantsmilesdental.com.sg'."\r\n".'X-Mailer: PHP/'.phpversion();
+                        
+                        mail($to, $subject, $message, $headers, '-ff32ee@localhost');
                     }
                     else{
                         echo"
@@ -286,7 +332,6 @@
                             <form action='appointments_client_view.php' >
                             <tr style='line-height:80px;'><td><input type='submit' class = 'submit' value='Try Again'></td></tr>
                             </form>
-
                         ";
                     }
                     exit();
