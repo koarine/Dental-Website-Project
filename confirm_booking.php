@@ -246,10 +246,6 @@
                     if ($db->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
-                    if(isset($_POST['link'])){
-                        $link = $_POST['link'];
-                        $db->query("UPDATE appointmentslots SET IsBooked=0,PatientID=NULL,ConsultType=NULL,Comments=NULL WHERE SlotID=$link");
-                    }
                     $SlotID = $_POST["time"];
                     $PatientID = $_SESSION["user_id"];
                     $ctype = $_POST["ctype"];
@@ -275,6 +271,10 @@
                     
                     $stmt=$db->query("SELECT * FROM  appointmentslots WHERE SlotID=$SlotID")->fetch_assoc();
                     if ($stmt['IsBooked']==0){
+                        if(isset($_POST['link'])){
+                            $link = $_POST['link'];
+                            $db->query("UPDATE appointmentslots SET IsBooked=0,PatientID=NULL,ConsultType=NULL,Comments=NULL WHERE SlotID=$link");
+                        }
                         $db->query("UPDATE appointmentslots SET IsBooked=1,PatientID=$PatientID,ConsultType='$ctype',Comments='$comments' WHERE SlotID=$SlotID");
                         echo "
                             <tr>
