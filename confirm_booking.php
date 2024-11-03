@@ -339,7 +339,7 @@
                         
                         $headers = 'From: booking@radiantsmilesdental.com.sg'."\r\n".'Reply-To: booking@radiantsmilesdental.com.sg'."\r\n".'X-Mailer: PHP/'.phpversion();
                         
-                        mail($to, $subject, $message, $headers, '-ff32ee@localhost');
+                        mail($to, $subject, $message, $headers);
                     }
                     else{
                         echo"
