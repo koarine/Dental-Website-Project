@@ -12,6 +12,14 @@ if(isset($_SESSION['reg_success'])){
         unset($_SESSION['reg_success']);
     }
 }
+if (isset($_SESSION['reset_success'])){
+    if ($_SESSION['reset_success']==true){
+        $email = $_SESSION['email'];
+        echo"<script>alert('Password reset success ✔️ New password sent to $email.')</script>";
+        unset($_SESSION['reset_success']);
+        unset($_SESSION['email']);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -236,7 +244,7 @@ if(isset($_SESSION['reg_success'])){
                                 <td><input type="submit" id="login" value="Log In" class ="textarea"></td>
                             </tr>
                             <tr>    
-                                <td><a href="" style="color:#404040; text-decoration: none;" >Forgot Password</a></td>
+                                <td><a href="resetpassword.php" style="color:#404040; text-decoration: none;" >Forgot Password</a></td>
                             </tr>
                         </form>
                         <script type="text/javascript">
