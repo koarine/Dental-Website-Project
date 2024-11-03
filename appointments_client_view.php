@@ -273,53 +273,54 @@
                                 style ="width:285px; appearance:none;" 
                                 required
                                 >
-                        <?php 
-                            $db = new mysqli("localhost","root","","dental");
-                            if ($db->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }
-                            $stmt = $db->query("SELECT * FROM  locations");
-                            while($row = $stmt ->fetch_assoc()){
-                                echo "<option value='".$row['user_id']."'id='".$row['user_id']."'class='".$row['clinic']."'>".$row['doctor_name']."</option>";
-                            }
-                        ?>  
-                        <script>
-                            var items = document.getElementsByClassName("2");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = true
-                                    }
-                            function multifunc(){
-                                time_update()
-                                validationchange()
-
-                            }
-                            window.onload = validationchange()
-                            function validationchange(){
-                                document.getElementById("doctor").value=""
-                                if (document.getElementById("clinic").value=="Jurong East Clinic"){
-                                    var items = document.getElementsByClassName("2");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = true
-                                    }
-                                    var items = document.getElementsByClassName("1");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = false
-                                    }
-                                }
-                                else if(document.getElementById("clinic").value=="Bishan Clinic"){
-                                    var items = document.getElementsByClassName("1");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = true
-                                    }
-                                    var items = document.getElementsByClassName("2");
-                                    for (var i = 0; i < items.length; i++) {
-                                        items[i].hidden = false
-                                    }
-                                }
-                                return
-                            }
-                        </script>
-                        </select></td></tr>
+                                    <?php 
+                                        $db = new mysqli("localhost","root","","dental");
+                                        if ($db->connect_error) {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }
+                                        $stmt = $db->query("SELECT * FROM  locations");
+                                        while($row = $stmt ->fetch_assoc()){
+                                            echo "<option value='".$row['user_id']."'id='".$row['user_id']."'class='".$row['clinic']."'>".$row['doctor_name']."</option>";
+                                        }
+                                    ?>  
+                                    <script>
+                                        var items = document.getElementsByClassName("2");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = true
+                                                }
+                                        function multifunc(){
+                                            time_update()
+                                            validationchange()
+                                        }
+                                        window.onload = validationchange()
+                                        function validationchange(){
+                                            document.getElementById("doctor").value=""
+                                            if (document.getElementById("clinic").value=="Jurong East Clinic"){
+                                                var items = document.getElementsByClassName("2");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = true
+                                                }
+                                                var items = document.getElementsByClassName("1");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = false
+                                                }
+                                            }
+                                            else if(document.getElementById("clinic").value=="Bishan Clinic"){
+                                                var items = document.getElementsByClassName("1");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = true
+                                                }
+                                                var items = document.getElementsByClassName("2");
+                                                for (var i = 0; i < items.length; i++) {
+                                                    items[i].hidden = false
+                                                }
+                                            }
+                                            return
+                                        }
+                                    </script>
+                                </select>
+                            </td>
+                        </tr>
                         <tr>
                             <td class="heading2">Date Preference</td>
                         </tr>
