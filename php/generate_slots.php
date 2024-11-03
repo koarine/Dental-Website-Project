@@ -19,6 +19,8 @@ $intervalMinutes = $_POST['time_interval'];
 $intervalSeconds = $intervalMinutes * 60;
 $currentDate = strtotime($startDate);
 $endDate = strtotime($endDate);
+$_SESSION['success']=0;
+$_SESSION['fail']=0;
 while ($currentDate <= $endDate) {
     $currentStartTime = strtotime($startTime);
     $currentEndTime = strtotime($endTime);
@@ -40,7 +42,7 @@ while ($currentDate <= $endDate) {
         );
         $stmt->execute();
         $stmt->bind_result($slotExists);
-        $stmt->fetch();
+        $stmt->fetch(); 
         $stmt->close();
         if ($slotExists == 0 && $EndTimeCompare>=$slotEndTime) {
             $insertSql = "INSERT INTO AppointmentSlots (DoctorID, AppointmentDate, StartTime, EndTime, IsBooked) 
@@ -49,6 +51,10 @@ while ($currentDate <= $endDate) {
             $stmt->bind_param("isss", $doctorID, $appointmentDate, $slotStartTime, $slotEndTime);
             $stmt->execute();
             $stmt->close();
+            $_SESSION['success']+=1;
+        }
+        else{
+            $_SESSION['fail']+=1;
         }
         $currentStartTime += $intervalSeconds;
     }

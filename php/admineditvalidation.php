@@ -30,19 +30,19 @@
     if($usertype=="doctor"){
         $db->query("UPDATE users SET user_name='$name',user_type='$usertype',email='$email',username='$username' WHERE user_id=$user_id ");
         $stmt=$db->query("SELECT * FROM locations WHERE user_id=$user_id");
-        if ($stmt->num_rows==0){
+        if ($stmt->num_rows==0){            
             $db->query("INSERT INTO locations SET user_id=$user_id,doctor_name='$name',clinic=$clinic");
         }
         else{
             $db->query("UPDATE locations SET clinic=$clinic,doctor_name='$name' WHERE user_id=$user_id");
         }
+        $db->query("DELETE FROM appointmentslots WHERE PatientID='$user_id'");
         $_SESSION['adminedit_success']=true;
         header("Location: ../appointments.php");
         exit();
     }   
     else{
         $db->query("UPDATE users SET user_name='$name',user_type='$usertype',email='$email',username='$username' WHERE user_id=$user_id ");
-        $db->query("DELETE FROM users WHERE user_id='$user_id'");
         $db->query("DELETE FROM locations WHERE user_id='$user_id'");
         $db->query("DELETE FROM appointmentslots WHERE DoctorID='$user_id'");
 
