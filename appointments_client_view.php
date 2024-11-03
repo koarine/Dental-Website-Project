@@ -433,6 +433,7 @@
                                 <textarea rows="2" cols="50" class="input" name="comment" style="resize: none;"></textarea>
                             </td>
                         </tr>
+                        <input type="hidden" name="action" value="booking">
                         <tr style="line-height:50px;">
                             <td>
                                 <input type="submit" class = "submit" value="CONFIRM">
