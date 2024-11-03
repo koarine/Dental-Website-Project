@@ -11,6 +11,7 @@
         exit();
     }
     $email = $db->query("SELECT * FROM users WHERE username='$username'")->fetch_assoc()['email'];
+    $name = $db->query("SELECT * FROM users WHERE username='$username'")->fetch_assoc()['user_name'];
     
     function generateRandomString($length = 10) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?';
@@ -22,6 +23,15 @@
         return $randomString;
     }
     $password = generateRandomString(); //this is the plaintext password
+
+    $subject = 'Password Reset for your Radiant Smiles Dental Account';
+    $message = "Dear $name, \n\n".
+                "Your password has been reset.\n\n".
+                "Your new password is: $password \n\n".
+                "Thank you for choosing Radiant Smiles Dental!\n\nBest regards,\nThe Radiant Smiles Dental Team";
+    $headers = 'From: password_reset@radiantsmilesdental.com.sg'."\r\n".'Reply-To: password_reset@radiantsmilesdental.com.sg'."\r\n".'X-Mailer: PHP/'.phpversion();
+    mail($email, $subject, $message, $headers);
+
     $hashed_password=password_hash($password,PASSWORD_BCRYPT);
     $db->query("UPDATE users SET user_password='$hashed_password' WHERE username='$username'");
     $_SESSION['reset_success']=true;
