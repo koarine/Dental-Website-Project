@@ -278,7 +278,7 @@
                 <div id="mid-header">
                     <a href="services.html" style="margin-left:2%">OUR SERVICES</a>   
                     <a href="about.html">ABOUT US</a>
-                    <a href="contact.html">CONTACT US</a>
+                    <a href="contact.php">CONTACT US</a>
                 </div>
                 <div id="right-header">
                 <a href="login.php">APPOINTMENTS</a>
