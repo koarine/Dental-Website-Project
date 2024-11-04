@@ -43,7 +43,7 @@
                 font-size: 23px;
                 margin-left: 3%;
                 font-family: "Roboto", sans-serif;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -52,7 +52,7 @@
             #mid-header a:hover{
                 font-size: 23px;
                 font-family: "Roboto", sans-serif;
-                font-weight: 550;
+                font-weight: 600;
                 background-color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -547,49 +547,6 @@
                         <button type="submit" id="submit">SEND</button>
                     </div>
                 </form>
-                <!-- <script>
-                    // form validation
-                    var first_name = document.getElementById("first-name");
-                    var last_name = document.getElementById("last-name");
-                    var email = document.getElementById("email");
-                    var phone = document.getElementById("phone");
-
-                    function validateForm() {
-                        if(first_name.value==""){
-                                alert("Name field cannot be empty!")
-                                return false
-                        }
-                        else{
-                            var regexp = /^[a-zA-Z][a-zA-Z ]*$/
-                            if(!regexp.test(first_name.value)){
-                                alert("Name field can only contain spaces and alphabets!")
-                                return false
-                            }
-                        }
-                        if(last_name.value==""){
-                                alert("Name field cannot be empty!")
-                                return false
-                        }
-                        else{
-                            var regexp = /^[a-zA-Z][a-zA-Z ]*$/
-                            if(!regexp.test(last_name.value)){
-                                alert("Name field can only contain spaces and alphabets!")
-                                return false
-                            }
-                        }
-                        if(email.value==""){
-                            alert("Email field cannot be empty!")    
-                            return false
-                        }
-                        else{
-                            var regexp = /^[\w-]+@[\w]+(\.[\w]+){1,3}$/ 
-                            if(!regexp.test(email.value)){
-                                alert("Email can only contain word characters (hyphen only for name), no more than 4 domain names.")
-                                return false
-                            }
-                        }
-                    }
-                </script> -->
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $firstName = $_POST['first-name'];
