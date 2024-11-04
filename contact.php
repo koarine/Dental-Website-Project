@@ -62,7 +62,7 @@
             #right-header a{
                 font-size: 23px;
                 font-family: "Roboto", sans-serif;
-                font-weight: 550;
+                font-weight: 500;
                 color: #404040;
                 text-decoration: none;
                 text-align: center;
@@ -440,7 +440,7 @@
         <div id="mid-header">
             <a href="services.html" style="margin-left:2%">OUR SERVICES</a> <!-- Style Overwrite -->
             <a href="about.html">ABOUT US</a>
-            <a href="contact.html">CONTACT US</a>
+            <a href="contact.php">CONTACT US</a>
         </div>
         <div id="right-header">
             <a href="login.php">APPOINTMENTS</a>
@@ -472,7 +472,7 @@
     <div id="page2">
         <div id="page2-container">
             <div id="page2-contact-form">
-                <form action="" method="post" onsubmit="handleSubmit()">
+                <form action="" method="post" onsubmit="validateForm()">
                     <div id="page2-form-title">
                         <p>Get in Touch</p>
                     </div>
@@ -486,6 +486,7 @@
                             class="userinput"
                             size="20"
                             placeholder="Required"
+                            pattern="^[a-zA-Z][a-zA-Z ]*$"
                             required
                             >
                         </div>
@@ -498,6 +499,7 @@
                             class="userinput"
                             size="20"
                             placeholder="Required"
+                            pattern="^[a-zA-Z][a-zA-Z ]*$"
                             required
                             >
                         </div>
@@ -512,6 +514,7 @@
                             class="userinput"
                             size="20"
                             placeholder="Required"
+                            pattern="^[\w-]+@[\w]+(\.[\w]+){1,3}$"
                             required
                             >
                         </div>
@@ -523,7 +526,8 @@
                             id="phone"
                             class="userinput"
                             size="20"
-                            pattern="[0-9]{4}-[0-9]{4}"
+                            pattern="[0-9]{4}[0-9]{4}"
+                            placeholder="e.g. 95554444"
                             >
                         </div>
                     </div>
@@ -543,6 +547,49 @@
                         <button type="submit" id="submit">SEND</button>
                     </div>
                 </form>
+                <!-- <script>
+                    // form validation
+                    var first_name = document.getElementById("first-name");
+                    var last_name = document.getElementById("last-name");
+                    var email = document.getElementById("email");
+                    var phone = document.getElementById("phone");
+
+                    function validateForm() {
+                        if(first_name.value==""){
+                                alert("Name field cannot be empty!")
+                                return false
+                        }
+                        else{
+                            var regexp = /^[a-zA-Z][a-zA-Z ]*$/
+                            if(!regexp.test(first_name.value)){
+                                alert("Name field can only contain spaces and alphabets!")
+                                return false
+                            }
+                        }
+                        if(last_name.value==""){
+                                alert("Name field cannot be empty!")
+                                return false
+                        }
+                        else{
+                            var regexp = /^[a-zA-Z][a-zA-Z ]*$/
+                            if(!regexp.test(last_name.value)){
+                                alert("Name field can only contain spaces and alphabets!")
+                                return false
+                            }
+                        }
+                        if(email.value==""){
+                            alert("Email field cannot be empty!")    
+                            return false
+                        }
+                        else{
+                            var regexp = /^[\w-]+@[\w]+(\.[\w]+){1,3}$/ 
+                            if(!regexp.test(email.value)){
+                                alert("Email can only contain word characters (hyphen only for name), no more than 4 domain names.")
+                                return false
+                            }
+                        }
+                    }
+                </script> -->
                 <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $firstName = $_POST['first-name'];
@@ -559,7 +606,7 @@
 
                     $headers = 'From: '.$email."\r\n".'Reply-To: f32ee@localhost'."\r\n".'X-Mailer: PHP/'.phpversion();
                     
-                    if (mail($to, $subject, $message, $headers)) {
+                    if (mail($to, $subject, $message, $headers, '-ff32ee@localhost')) {
                         echo "<script>
                         alert('Message successfully sent!');
                         </script>";
@@ -645,10 +692,7 @@
         </div>
     </div>
 
-    <script>
-        // form validation
-        // var name = document.getElementById("");
-        
+    <script>        
         // button scroll
         function scrollToSection() {
             const scrollAmount = window.innerHeight * 0.85;
