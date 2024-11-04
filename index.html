@@ -317,25 +317,28 @@
                 float: left;
                 width: 50%;
                 height: 100%;
-                margin-top: 30px;
             }
             #b3right{
-                width: 700px;
-                height: 450px;
-                margin-top: 60px;
-
-                border-width: 1px 1px 1px 1px;
-                border-style: solid;
-                border-color: #404040;
-                border-radius: 40px;
-                position: relative;
-                overflow: hidden;
+                height:100%;
+                margin-left:50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; 
+                align-items: center; 
+                transform: translateX(-70px)
             }
-            #b3right iframe {
-                position: absolute;
-                top: -50px;
-                left: -4px;
-                width: 110%;
+            #b3right button{
+                margin-top:20px;
+                border:none;
+                font-size: 23px;
+                font-family: "Roboto", sans-serif;
+                font-weight: 550;
+                background-color: #115278;
+                padding: 13px 25px;
+                border-radius: 45px;
+                width:250px;
+                text-decoration: none;
+                color:white;
             }
 
         </style>
@@ -404,31 +407,43 @@
             </div>
         </div>
         <div id="bottom3">
-            <div id="bottom3-header">
-                <p id="text3" style="padding-top:115px">Convenient & Accessible</p>
-            </div>
-            <div id="bottom3-content">
-                <div id="b3left">
-                    <p id="Text2">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
-                    <div id="text-addresses">
-                        <p style="color: #115278;">
-                            <b>JURONG EAST</b><br>
-                        </p>
-                        <p style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">
-                            Singapore 608549<br>Mon-Sat, 9:00 am-7:00 pm
-                        </p>
-                        <p style="color: #115278;">
-                            <b>BISHAN</b><br>
-                        </p>
-                        <p style="font-size: 20px; margin-bottom: 50px; font-weight: 700;">
-                            Singapore 579837<br>Mon-Sun, 9:00 am-9:00 pm
-                        </p>
+            <div id="b3left">
+                <div id="bottom3-header">
+                    <p id="text3" style="padding-top:70px">Convenient <br>& Accessible</p>
+                    <p id="Text2" style="margin-bottom: 20px; margin-right:0px;">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
+                    <div id="bottom3-content">
+                        <div id="text-addresses">
+                            <p style=" font-size: 38px;  font-weight: 700;color: #115278;">
+                                <b>📌JURONG EAST</b><br>
+                            </p>
+                            <p style="font-size: 25px; margin-bottom: 10px; font-weight: 700;">
+                                🗺️ Singapore 608549<br>🕓 Mon-Sat, 9:00 am - 7:00 pm
+                            </p>
+                            <p style="font-size: 38px;  font-weight: 700;color: #115278;">
+                                <b>📌BISHAN</b><br>
+                            </p>
+                            <p style="font-size: 25px; margin-bottom: 40px; font-weight: 700;">
+                                🗺️ Singapore 579837<br>🕓 Mon-Sun, 9:00 am-9:00 pm
+                            </p>
+                        </div>
                     </div>
-                    <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+                    <a href="contact.php" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
                 </div>
-                <div id="b3right">
-                    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=11xwnkbjIFIxmA_Jyb0E97JPBredro7g&ehbc=2E312F&noprof=1&z=12" width="700" height="513"></iframe>
-                </div>
+            </div>
+            <div id="b3right"><iframe id="mapj"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe id="mapb" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d498.5887004775137!2d103.84819125898981!3d1.3507699409925775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1716982be16f%3A0x3e220fb717605d06!2sJunction%208!5e0!3m2!1sen!2ssg!4v1730699035720!5m2!1sen!2ssg" width="700" height="450" style="border:0;"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+                <div><button style="margin-right:10px;" onclick="jclick()">JURONG EAST</button><button onclick="bclick()">BISHAN</button></div>
+                <script>
+                    function bclick(){
+                        document.getElementById("mapj").hidden=true;
+                        document.getElementById("mapb").hidden=false;
+                    }
+                    function jclick(){
+                        document.getElementById("mapb").hidden=true;
+                        document.getElementById("mapj").hidden=false;
+                     }
+                
+                </script>
             </div>
         </div>
         
