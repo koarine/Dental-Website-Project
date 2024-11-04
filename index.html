@@ -1,350 +1,436 @@
-<!DOCTYPE html>
-<html lang="en">
-    <script src="javascript/scrollfunction.js"></script>
-    <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <title>Radiant Smiles Dental | Home</title>
-        <style>
-            html{height: 100%;
-                min-height: 1080x;
-                padding:0;
-                border:0;
-                min-width: 1850px;
-            }
-            body{background-color: white;
-                font-family:Verdana, Arial, sans-serif;
-                height:100%;
-                margin:0 ;
-                overflow:hidden;
-            }
-            p{
-                border:0;
-                margin:0;
-            }
-            header{
-                background-color: #21c1b9;
-                height:15%;
-                width: 100%;
-                border: 0;
-                position:fixed;
-                min-width: 1050px;
-                min-height:138px;
-            }   
-            #left-header a{
-                height:100%;
-                width:100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #mid-header a{
-                font-size: 23px;
-                margin-left: 3%;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: white;
-                padding: 20px 15px;
-                border-radius: 12px;
-                text-decoration: none;
-            }
-            #mid-header a:hover{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                background-color: white;
-                padding: 20px 15px;
-                border-radius: 12px;
-                box-shadow: 2px 3px 3px #404040;
-                color:#404040;
-            }
-            #right-header a{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: #404040;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: white;
-                padding: 20px 15px;
-                border-radius: 12px;
-                box-shadow: 2px 3px 3px #404040;
-            }
-            #right-header a:hover{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: #21c1b9;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: white;
-                padding: 20px 15px;
-                border-radius: 12px;
-                box-shadow: 2px 4px 4px #404040;
-            }
-            #left-header{
-                width: 12.5%;
-                height: 100%;
-                float: left;
-                min-width: 200px;
-            }
-            #mid-header{
-                width: 55%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                float: left;
-            }
-            #right-header{
-                width: 17.5%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                float: right;
-                text-align: center;
-                min-width: 250px;
-            }
-            #bottom-header{
-                height:100%;
-                width:100%;
-                background-color: rgb(238, 255, 235);
-                min-height:900px
-            }
-            #Text1{
-                font-family: "Roboto", system-ui;
-                font-weight: 700;
-                font-style: normal;
-                margin: 0;
-                font-size: 92px;
-                color:#115278;
-                line-height: 75px;
-                padding-top: 330px;
-                padding-left: 200px;
-            }
-            #Text2{
-                color:#404040;
-                font-family: "Roboto", system-ui;
-                font-weight: 550;
-                font-size:28px;
-                padding-left: 200px;
-                margin-bottom: 40px;
-                margin-top:30px;
-            }
-            #Pic1{
-                margin-top:190PX
-            }
-            #left-body{
-                width: 65%;
-                height:100%;
-                float:left;
-            }
-            #right-body{
-                margin-left: 65%;
-                height:100%;
-            }
-            #left-body a{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: #115278;
-                padding: 20px 15px;
-                border-radius: 12px;
-                margin-left: 16%;
-                
-            }
-            #left-body a:hover{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: #404040;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: #21c1b9;
-                padding: 20px 15px;
-                border-radius: 12px;
-                margin-left: 16%;
-            }
-            #bottom2{
-                height:85%;
-                width:100%;
-                background-color: white;
-                min-height:700px
-            }
-            #text3{
-                font-family: "Roboto", system-ui;
-                font-weight: 700;
-                font-style: normal;
-                margin: 0;
-                font-size: 92px;
-                color:#115278;
-                line-height: 75px;
-                padding-top: 80px;
-                padding-left: 200px;
-            }
-            #b2-upper{
-                height:35%;
-                width:100%;
-            }
-            #b2-lower{
-                height:65%;
-                width:100%
-            }
-            #b2-lower-1{
-                height: 100%;
-                width: 35%;
-                float:left;
-            }
-            #b2-lower-2{
-                height: 100%;
-                width: 26%;
-                float: left;
-            }
-            #b2-lower-3{
-                height: 100%;
-                width: 49%;
-                margin-left: 51%;
-            }
-            .b2head{
-                font-family: "Roboto", system-ui;
-                font-weight: 700;
-                font-style: normal;
-                color:#115278;
-                font-size: 50px;
-            }
-            .b2child{
-                font-family: "Roboto", system-ui;
-                font-weight: 700;
-                font-style: normal;
-                color:#404040;
-                font-size: 20px;
-            }
-            .b2button{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: #115278;
-                padding: 20px 15px;
-                border-radius: 12px;
-            }
+    <!DOCTYPE html>
+    <html lang="en">
+        <meta charset="UTF-8">
 
-            .b2button:hover{
-                font-size: 23px;
-                font-family: "Roboto", sans-serif;
-                font-weight: 550;
-                color: #404040;
-                text-decoration: none;
-                text-align: center;
-                margin: auto;
-                background-color: #21c1b9;
-                padding: 20px 15px;
-                border-radius: 12px;
-            }
-            #bottom3{
-                height:85%;
-                width:100%;
-                background-color: rgb(238, 255, 235);
-                min-height:700px
-            }
-            #b3left{
-                float: left;
-                width: 50%;
-                height: 100%;
-            }
-            #b3right{
-                margin-left: 50%;
-                width: 50%;
-                height: 100%;
-            }
-            #map{
-                margin-top:150px;
-                margin-left:80px;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div id="left-header">
-                <a href="index.html"><img src="images/logo.png" height = 85%></a>
-            </div>
-            <div id="mid-header">
-                <a href="services.html" style="margin-left:2%">OUR SERVICES</a> <!-- Style Overwrite -->
-                <a href="about.html">ABOUT US</a>
-                <a href="contact.html">CONTACT US</a>
-            </div>
-            <div id="right-header">
-                <a href="login.php">APPOINTMENTS</a>
-            </div>
-        </header>
-        <div id="bottom-header">
-            <div id="left-body">
-                <p id="Text1"><i>PERFECT<br> <u>YOUR</u> SMILE</i></p>
-                <p id="Text2">Do you smile with your lips closed? Cover your mouth with <br>your hand when you laugh? Or simply have troubles with
-                <br> speech, 
-                chewing and jaw pain? When your teeth are in the right <br>position, you will find it easier to maintain good oral hygiene, 
-                have proper <br>bite and achieve better overall well being. Learn how dental braces can help. 
-                </p>
-                <a href="services.html">LEARN MORE</a> 
-            </div>
-            <div id="right-body">
-                <img src="images/StockIndex.png" id="Pic1">
-            </div>         
-        </div>
-        <div id="bottom2">
-            <div id ="b2-upper">
-                <p id ="text3"><i>World-Class</i><br>Dentists & Orthodontists</p>
-            </div>
-            <div id="b2-lower">
-                <div id="b2-lower-1">
-                    <img src = "images/orthodontist.webp" width=180px style = "margin-left:200px">
-                    <p class="b2head" style="margin-left: 200px;">Dr Zhang Wei</p>
-                    <p class="b2child" style="margin-left: 200px; margin-bottom:30px">Dentist<br>B.D.S. (Singapore)<br>
-                        Masters of Dental Surgery (Orthodontics)<br>
-                        Masters of Orthodontics RCS (Edinburgh)
-                    </p>
-                    <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+        <script src="javascript/scrollfunction.js"></script>
+        <head>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+            <title>Radiant Smiles Dental | Home</title>
+            <style>
+                html{height: 100%;
+                    min-height: 1080x;
+                    padding:0;
+                    border:0;
+                    min-width: 1850px;
+                }
+                body{background-color: white;
+                    font-family:Verdana, Arial, sans-serif;
+                    height:100%;
+                    margin:0 ;
+                    overflow:hidden;
+                }
+                p{
+                    border:0;
+                    margin:0;
+                }
+                header{
+                    background-color: #21c1b9;
+                    height:15%;
+                    width: 100%;
+                    border: 0;
+                    position:fixed;
+                    min-width: 1050px;
+                    min-height:138px;
+                }   
+                #left-header a{
+                    height:100%;
+                    width:100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #mid-header a{
+                    font-size: 23px;
+                    margin-left: 3%;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: white;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    text-decoration: none;
+                }
+                #mid-header a:hover{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    background-color: white;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    box-shadow: 2px 3px 3px #404040;
+                    color:#404040;
+                }
+                #right-header a{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: #404040;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: white;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    box-shadow: 2px 3px 3px #404040;
+                }
+                #right-header a:hover{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: #21c1b9;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: white;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    box-shadow: 2px 4px 4px #404040;
+                }
+                #left-header{
+                    width: 12.5%;
+                    height: 100%;
+                    float: left;
+                    min-width: 200px;
+                }
+                #mid-header{
+                    width: 55%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    float: left;
+                }
+                #right-header{
+                    width: 17.5%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    float: right;
+                    text-align: center;
+                    min-width: 250px;
+                }
+                #bottom-header{
+                    height:100%;
+                    width:100%;
+                    background-color: rgb(238, 255, 235);
+                    /* background: linear-gradient(rgb(238, 255, 235) 95%, white); */
+                    min-height:900px
+                }
+                #Text1{
+                    font-family: "Roboto", system-ui;
+                    font-weight: 700;
+                    font-style: normal;
+                    margin: 0;
+                    font-size: 92px;
+                    color:#115278;
+                    line-height: 75px;
+                    padding-top: 330px;
+                    padding-left: 200px;
+                }
+                #Text2{
+                    color:#404040;
+                    font-family: "Roboto", system-ui;
+                    font-weight: 550;
+                    font-size:28px;
+                    padding-left: 200px;
+                    margin-bottom: 40px;
+                    margin-top:30px;
+                }
+                #text-addresses {
+                    color:#404040;
+                    font-family: "Roboto", system-ui;
+                    font-size:28px;
+                    padding-left: 200px;
+                    margin-bottom:30px;
+                }
+                #Pic1{
+                    margin-top:190PX
+                }
+                #left-body{
+                    width: 65%;
+                    height:100%;
+                    float:left;
+                }
+                #right-body{
+                    margin-left: 65%;
+                    height:100%;
+                }
+                #left-body a{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: white;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: #115278;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    margin-left: 16%;
+                    
+                }
+                #left-body a:hover{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: #404040;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: #21c1b9;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                    margin-left: 16%;
+                }
+                #bottom2{
+                    height:85%;
+                    width:100%;
+                    background-color: white;
+                    /* background: linear-gradient(white 95%, rgb(238, 255, 235)); */
+                    min-height:700px
+                }
+                #text3{
+                    font-family: "Roboto", system-ui;
+                    font-weight: 700;
+                    font-style: italic;
+                    margin: 0;
+                    font-size: 92px;
+                    color:#115278;
+                    line-height: 75px;
+                    padding-top: 80px;
+                    padding-left: 200px;
+                }
+                #b2-upper{
+                    height:35%;
+                    width:100%;
+                }
+                #b2-lower{
+                    height:65%;
+                    width:100%
+                }
+                #b2-lower-1{
+                    height: 100%;
+                    width: 35%;
+                    float:left;
+                }
+                #b2-lower-2{
+                    height: 100%;
+                    width: 26%;
+                    float: left;
+                }
+                #b2-lower-3{
+                    height: 100%;
+                    width: 49%;
+                    margin-left: 51%;
+                }
+                .b2head{
+                    font-family: "Roboto", system-ui;
+                    font-weight: 700;
+                    font-style: normal;
+                    color:#115278;
+                    font-size: 50px;
+                }
+                .b2child{
+                    font-family: "Roboto", system-ui;
+                    font-weight: 700;
+                    font-style: normal;
+                    color:#404040;
+                    font-size: 20px;
+                }
+                .b2button{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: white;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: #115278;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                }
+
+                .b2button:hover{
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    color: #404040;
+                    text-decoration: none;
+                    text-align: center;
+                    margin: auto;
+                    background-color: #21c1b9;
+                    padding: 20px 15px;
+                    border-radius: 12px;
+                }
+                #bottom3{
+                    height:85%;
+                    width:100%;
+                    background-color: rgb(238, 255, 235);
+                    /* background: linear-gradient(rgb(238, 255, 235) 80%, #beccb8); */
+                    min-height:700px
+                }
+                #bottom3-content {
+                    display: flex;
+                }
+                #b3left{
+                    float: left;
+                    width: 50%;
+                    height: 100%;
+                }
+                #b3right{
+                    height:100%;
+                    margin-left:50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center; 
+                    align-items: center; 
+                    transform: translateX(-70px)
+                }
+                #b3right button{
+                    margin-top:20px;
+                    border:none;
+                    font-size: 23px;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 550;
+                    background-color: #115278;
+                    padding: 13px 25px;
+                    border-radius: 45px;
+                    width:250px;
+                    text-decoration: none;
+                    color:white;
+                }
+
+            </style>
+        </head>
+        <body>
+            <header>
+                <div id="left-header">
+                    <a href="index.html"><img src="images/logo.png" height = 85%></a>
                 </div>
-                <div id="b2-lower-2">
-                    <img src = "images/orthodontist.webp" width=180px style="margin-left: 20px;">
-                    <p class="b2head" style="margin-left: 20px;">Dr Wei Yuan</p>
-                    <p class="b2child" style="margin-left: 20px; margin-bottom:30px" >Dentist<br>B.D.S. (Singapore)<br>
-                        Masters of Dental Surgery (Orthodontics)<br>Masters of Orthodontics RCS (Edinburgh)
-                    </p>
-                    <a href="" class="b2button" style="margin-left: 20px;">LEARN MORE</a>
+                <div id="mid-header">
+                    <a href="services.html" style="margin-left:2%">OUR SERVICES</a> <!-- Style Overwrite -->
+                    <a href="about.html">ABOUT US</a>
+                    <a href="contact.php">CONTACT US</a>
                 </div>
-                <div id="b2-lower-3">
-                    <img src = "images/orthodontist.webp" width=180px style="margin-left: 10px;">
-                    <p class="b2head" style="margin-left: 210px;">Dr Yi Song</p>
-                    <p class="b2child"style="margin-left: 210px; margin-bottom:30px">Orthodontist<br>
-                        Accredited Specialist (Singapore Dental Council)<br>
-                        Masters of Dental Surgery (Orthodontics)<br>Masters of Orthodontics RCS (Edinburgh)
+                <div id="right-header">
+                    <a href="login.php">APPOINTMENTS</a>
+                </div>
+            </header>
+            <div id="bottom-header">
+                <div id="left-body">
+                    <p id="Text1"><i>PERFECT<br> <u>YOUR</u> SMILE</i></p>
+                    <p id="Text2">Do you smile with your lips closed? Cover your mouth with <br>your hand when you laugh? Or simply have troubles with
+                    <br> speech, 
+                    chewing and jaw pain? When your teeth are in the right <br>position, you will find it easier to maintain good oral hygiene, 
+                    have proper <br>bite and achieve better overall well being. Learn how dental braces can help. 
                     </p>
-                    <a href="" class="b2button" style="margin-left: 20px;">LEARN MORE</a>
+                    <a href="services.html">LEARN MORE</a> 
+                </div>
+                <div id="right-body">
+                    <img src="images/StockIndex.png" id="Pic1">
+                </div>         
+            </div>
+            <div id="bottom2">
+                <div id ="b2-upper">
+                    <p id ="text3"><i>World-Class</i><br>Dentists & Orthodontists</p>
+                </div>
+                <div id="b2-lower">
+                    <div id="b2-lower-1">
+                        <img src = "images/dentist2.jpg" width=180px style = "margin-left:200px; border-radius: 1000px;">
+                        <p class="b2head" style="margin-left: 200px;">Dr Zhang Wei</p>
+                        <p class="b2child" style="margin-left: 200px; margin-bottom:30px">Dentist<br>B.D.S. (Singapore)<br>
+                            Masters of Dental Surgery (Orthodontics)<br>
+                            Masters of Orthodontics RCS (Edinburgh)
+                        </p>
+                        <a href="about.html" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+                    </div>
+                    <div id="b2-lower-2">
+                        <img src = "images/drweiyuan_home.jpg" width=180px style="margin-left: 20px; border-radius: 1000px;">
+                        <p class="b2head" style="margin-left: 20px;">Dr Wei Yuan</p>
+                        <p class="b2child" style="margin-left: 20px; margin-bottom:30px" >Dentist<br>B.D.S. (Singapore)<br>
+                            Masters of Dental Surgery (Orthodontics)<br>Masters of Orthodontics RCS (Edinburgh)
+                        </p>
+                        <a href="about.html" class="b2button" style="margin-left: 20px;">LEARN MORE</a>
+                    </div>
+                    <div id="b2-lower-3">
+                        <img src = "images/dryisong_home.jpg" width=180px style="margin-left: 10px; border-radius: 1000px;">
+                        <p class="b2head" style="margin-left: 210px;">Dr Yi Song</p>
+                        <p class="b2child"style="margin-left: 210px; margin-bottom:30px">Orthodontist<br>
+                            Accredited Specialist (Singapore Dental Council)<br>
+                            Masters of Dental Surgery (Orthodontics)<br>Masters of Orthodontics RCS (Edinburgh)
+                        </p>
+                        <a href="about.html" class="b2button" style="margin-left: 20px;">LEARN MORE</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="bottom3">
-            <div id="b3left">
-                <p id="text3" style="padding-top:115px">Convenient <br>& Accessible</p>
-                <p id="Text2" style="margin-bottom: 0px;">Located in the bustling Jurong East estate, we are conveniently located in JEM which is just a 5 minutes <br>walk from the Jurong East MRT.</p>
-                <p id="Text2" style="margin-top: 20px;">Address: 50 Jurong Gateway Rd, Jem #02-07<br>Operating Hours: Mon-Sat, 9am-7pm
-                <br>Contact: (+65) 6823 5148</p>
-                <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+            <div id="bottom3">
+                <div id="b3left">
+                    <div id="bottom3-header">
+                        <p id="text3" style="padding-top:70px">Convenient <br>& Accessible</p>
+                        <p id="Text2" style="margin-bottom: 20px;">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
+                        <div id="bottom3-content">
+                            <div id="text-addresses">
+                                <p style=" font-size: 38px;  font-weight: 700;color: #115278;">
+                                    <b>📌JURONG EAST</b><br>
+                                </p>
+                                <p style="font-size: 25px; margin-bottom: 10px; font-weight: 700;">
+                                    🗺️ Singapore 608549<br>🕓 Mon-Sat, 9:00 am - 7:00 pm
+                                </p>
+                                <p style="font-size: 38px;  font-weight: 700;color: #115278;">
+                                    <b>📌BISHAN</b><br>
+                                </p>
+                                <p style="font-size: 25px; margin-bottom: 10px; font-weight: 700;">
+                                    🗺️ Singapore 579837<br>🕓 Mon-Sun, 9:00 am-9:00 pm
+                                </p>
+                            </div>
+                        </div>
+                        <a href="contact.php" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+                    </div>
+                </div>
+                <div id="b3right"><iframe id="mapj"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe id="mapb" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d498.5887004775137!2d103.84819125898981!3d1.3507699409925775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da1716982be16f%3A0x3e220fb717605d06!2sJunction%208!5e0!3m2!1sen!2ssg!4v1730699035720!5m2!1sen!2ssg" width="700" height="450" style="border:0;"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+                    <div><button style="margin-right:10px;" onclick="jclick()">JURONG EAST</button><button onclick="bclick()">BISHAN</button></div>
+                    <script>
+                        function bclick(){
+                            document.getElementById("mapj").hidden=true;
+                            document.getElementById("mapb").hidden=false;
+                        }
+                        function jclick(){
+                            document.getElementById("mapb").hidden=true;
+                            document.getElementById("mapj").hidden=false;
+                         }
+                    
+                    </script>
+                </div>
+
+                <!-- <div id="bottom3-header">
+                    <p id="text3" style="padding-top:115px">Convenient <br>& Accessible</p>
+                </div>
+                <div id="bottom3-content">
+                    <div id="b3left">
+                        <p id="Text2">We have two convenient locations to serve you better.<br>Our clinics are just minutes away from MRT stations, making it easy to reach us no matter where you are.</p>
+                        <div id="text-addresses">
+                            <p style="color: #115278;">
+                                <b>JURONG EAST</b><br>
+                            </p>
+                            <p style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">
+                                Singapore 608549<br>Mon-Sat, 9:00 am-7:00 pm
+                            </p>
+                            <p style="color: #115278;">
+                                <b>BISHAN</b><br>
+                            </p>
+                            <p style="font-size: 20px; margin-bottom: 50px; font-weight: 700;">
+                                Singapore 579837<br>Mon-Sun, 9:00 am-9:00 pm    
+                            </p>
+                        </div>
+                        <a href="" class="b2button" style="margin-left: 200px;">LEARN MORE</a>
+                    </div>
+                    <div id="b3right">
+                        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=11xwnkbjIFIxmA_Jyb0E97JPBredro7g&ehbc=2E312F&noprof=1&z=12" width="700" height="513"></iframe>
+                    </div>
+                </div> -->
             </div>
-            <div id="b3right">
-                <iframe id="map"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d705.1159109006845!2d103.74300352252412!3d1.3333980570875543!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da100efcf7d7c1%3A0xbe022b90beada1c0!2s50%20Jurong%20Gateway%20Rd%2C%20Singapore%20608549!5e0!3m2!1sen!2ssg!4v1726948821619!5m2!1sen!2ssg" width="700" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </body>
-</html>
+        </body>
+    </html>
