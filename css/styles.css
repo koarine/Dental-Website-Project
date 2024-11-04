@@ -265,6 +265,10 @@ span{
     color: #404040;
     background-color: #21c1b9;
 }
+.book-appointment-link {
+    text-decoration: none;
+    color: white;
+}
 
 /* ================================================ Second page ================================================ */
 .page {
