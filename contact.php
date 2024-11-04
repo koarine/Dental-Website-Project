@@ -559,7 +559,7 @@
 
                     $headers = 'From: '.$email."\r\n".'Reply-To: f32ee@localhost'."\r\n".'X-Mailer: PHP/'.phpversion();
                     
-                    if (mail($to, $subject, $message, $headers, '-ff32ee@localhost')) {
+                    if (mail($to, $subject, $message, $headers)) {
                         echo "<script>
                         alert('Message successfully sent!');
                         </script>";
