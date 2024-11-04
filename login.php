@@ -85,7 +85,6 @@ if (isset($_SESSION['reset_success'])){
                 position:fixed;
                 min-width: 1050px;
                 min-height:138px;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             }
             #left-header{
                 width: 12.5%;
