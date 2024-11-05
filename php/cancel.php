@@ -25,7 +25,18 @@
     $stmt = $db->query("SELECT * FROM locations WHERE user_id=$DoctorID")->fetch_assoc();
     $DoctorName = $stmt['doctor_name'];
     $ClinicLocation = $stmt['clinic'];
-
+    if ($ClinicLocation==1){
+        $ClinicLocation="Jurong East Clinic";
+    }
+    else if ($ClinicLocation==1){
+        $ClinicLocation="Bishan Clinic";
+    }
+    $apptResult = $db->query("SELECT StartTime, EndTime FROM appointmentslots WHERE SlotID = $appt_id");
+    while ($apptRow = $apptResult->fetch_assoc()) {
+        $startTime = date('g:i A', strtotime($apptRow['StartTime']));
+        $endTime = date('g:i A', strtotime($apptRow['EndTime']));
+        $apptTiming = $startTime. " to ". $endTime;
+    }
     // update appointment slots for cancellation
     $query="UPDATE appointmentslots SET IsBooked=0,PatientID=NULL,ConsultType=NULL,Comments=NULL WHERE SlotID=$appt_id";
     $stmt=$db->query($query);
@@ -36,7 +47,7 @@
     $stmt = $db->query("SELECT email FROM users WHERE user_id=$PatientID")->fetch_assoc();
     $to = $stmt["email"];
     // get name
-    $name = $_SESSION["user_name"];
+    $name = $db->query("SELECT * FROM users WHERE user_id=$PatientID")->fetch_assoc()['user_name'];
     // email subject
     $subject = 'Cancellation of Appointment at Radiant Smiles Dental';
     // email message
@@ -46,7 +57,7 @@
             "Clinic Location: $ClinicLocation \n".
             "Doctor: $DoctorName \n".
             "Date: $ApptDate \n".
-            "Time: $StartTime to $EndTime \n".
+            "Time: $apptTiming \n".
             "Consult Type: $ConsultType \n".
             "Comments: $Comments \n\n".
             "Thank you for choosing Radiant Smiles Dental!\n\nBest regards,\nThe Radiant Smiles Dental Team";
