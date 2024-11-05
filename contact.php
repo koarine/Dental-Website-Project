@@ -556,7 +556,7 @@
                     $message = $_POST['message'];
 
                     $to = 'f32ee@localhost';
-                    $subject = 'Contact Form Submission from'.$firstName.' '.$lastName;
+                    $subject = 'Contact Form Submission from '.$firstName.' '.$lastName;
                     $message = "Name: $firstName $lastName\n".
                                 "Phone: $phone\n".
                                 "Message:\n$message";
