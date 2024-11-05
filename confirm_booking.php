@@ -8,10 +8,8 @@
     }   
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-    
     <head>
         <title>Radiant Smiles Dental | Home</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +56,7 @@
             #mid-header a{
                 font-size: 23px;
                 margin-left: 3%;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -309,7 +307,7 @@
                         $stmt = $db->query("SELECT email FROM users WHERE user_id=$PatientID")->fetch_assoc();
                         $to = $stmt["email"];
                         // get name
-                        $name = $_SESSION["user_name"];
+                        $name = $db->query("SELECT * FROM users WHERE user_id=$PatientID")->fetch_assoc()['user_name'];
                         // email subject
                         
 

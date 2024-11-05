@@ -57,7 +57,7 @@
             #mid-header a{
                 font-size: 23px;
                 margin-left: 3%;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -232,7 +232,7 @@
                 <a href="contact.php">CONTACT US</a>
             </div>
             <div id="right-header">
-                <a href="php/logout.php">APPOINTMENTS</a>
+                <a href="appointments.php">APPOINTMENTS</a>
             </div>
         </header>
         <div id="blank"></div>

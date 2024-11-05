@@ -59,7 +59,7 @@
             #mid-header a{
                 font-size: 23px;
                 margin-left: 3%;
-                font-weight: 550;
+                font-weight: 600;
                 color: white;
                 padding: 20px 15px;
                 border-radius: 12px;
@@ -292,7 +292,7 @@
                         <tr><td class="heading2">Comments</td></tr><tr><td><textarea rows="1" cols="50" class="input" name="comment" style="resize: none;" disabled><?php echo $comments ?></textarea></tr></td>
                         <tr style="line-height:50px;"><td><input type="submit" class = "submit" value="RESCHEDULE"></td></tr>
                     </form>
-                        <tr><td><form action="php/cancel.php" method="POST"><button type="submit"name="link" onclick="confirm('Are you sure you want to cancel?')" value="<?php echo $appt_id?>">CANCEL</button></form></tr></td>
+                        <tr><td><form action="php/cancel.php" method="POST"><button type="submit"name="link" onclick="return confirm('Are you sure you want to cancel?')" value="<?php echo $appt_id?>">CANCEL</button></form></tr></td>
                 </table>
             </div>
         </div>
