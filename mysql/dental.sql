@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2024 at 04:03 PM
+-- Generation Time: Nov 04, 2024 at 04:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,7 +56,9 @@ CREATE TABLE `locations` (
 --
 
 INSERT INTO `locations` (`user_id`, `doctor_name`, `clinic`) VALUES
-(29, 'Kim Lee', '1');
+(44, 'Zhang Wei', '1'),
+(45, 'Wei Yuan', '1'),
+(46, 'Yi Song', '2');
 
 -- --------------------------------------------------------
 
@@ -79,8 +81,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_type`, `user_name`, `email`) VALUES
 (17, 'admin', '$2y$10$RWoJXUV2/C8DcQcbv1W3NOyX5m5RkAkmJvkSuCjk78jhdmRsTUYte', 'admin', 'admin', 'admin@admin.admin'),
-(28, 'patient', '$2y$10$a5BLTV0nVCvghMA4a8Cqlefd4KLa1PU9LO7npTHltxhpUoi4MvCf2', 'patient', 'Sarah Lee', 'koarine@gmail.com'),
-(29, 'doctor', '$2y$10$TXqUbI9myBlIwWoxOJ0HIO./DyIXEJ7Tbof.Es7Adq8cNF4Mdqm06', 'doctor', 'Kim Lee', 'koarine@gmail.com');
+(42, 'patient', '$2y$10$bE/2Qm5zHDFMpG3i9JL2M.XmFauNIthk/vJ98NNHYmBg0815DLt3S', 'patient', 'Sarah Lee', 'f31ee@localhost'),
+(43, 'patient2', '$2y$10$MshrACW6W6FltjBn7nEA.uuf0IJHEka2b5rqk.YjTikANfmEwRqsu', 'patient', 'John Tan', 'John@gmail.com'),
+(44, 'doctor', '$2y$10$pX5HjAFPp/k12LaxsSBIwe1I3sUuRV08.RogvoNrQjVSQmoHEmO6y', 'doctor', 'Zhang Wei', 'zw@rsd.com'),
+(45, 'doctor2', '$2y$10$RM21P8MAehJhiNITHqEise2KXSCPG0kjiYDo8XXu9gBuHb2qccbaK', 'doctor', 'Wei Yuan', 'wy@rsd.com'),
+(46, 'doctor3', '$2y$10$PuZEQtSDFvmO2LhcFOPoNue0VeeGLEva.FVqK7Ib3lg1kqyyVNy/a', 'doctor', 'Yi Song', 'ys@rsd.com');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +118,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointmentslots`
 --
 ALTER TABLE `appointmentslots`
-  MODIFY `SlotID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14740;
+  MODIFY `SlotID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14855;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -125,7 +130,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
