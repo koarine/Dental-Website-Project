@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="javascript/scrollfunction.js"></script>
+    <meta charset="UTF-8">
+    <title>Radiant Smiles Dental | About Us</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div id="left-header">
+            <a href="index.html"><img src="images/logo.png" height = 85%></a>
+        </div>
+        <div id="mid-header">
+            <a href="services.html" style="margin-left:2%">OUR SERVICES</a> <!-- Style Overwrite -->
+            <a href="about.html">ABOUT US</a>
+            <a href="contact.php">CONTACT US</a>
+        </div>
+        <div id="right-header">
+            <a href="login.php">APPOINTMENTS</a>
+        </div>
+    </header>
+
+    <div id="page1">
+        <div id="page1-maintext">
+            <h1>
+                Meet the Experts
+            </h1>
+        </div>
+        <div id="page1-subtext">
+            <h2>
+                Dedicated to Perfecting Your Smile with Advanced Orthodontic Care
+            </h2>
+        </div>
+        <div id="page1-image-wrapper">
+            <div id="page1-image1" class="page1-image-container">
+                <img src="images/dentist2.webp" 
+                alt="orthodontist" height="350px" 
+                class="page1-img" 
+                onclick="scrollToSection(2)"
+                >
+                <div class="page1-doctor-name">Dr. Zhang Wei</div>
+            </div>
+            <div id="page1-image2" class="page1-image-container">
+                <img src="images/new_drweiyuan.jpg" 
+                alt="dentist" 
+                height="350px" 
+                class="page1-img"
+                onclick="scrollToSection(3)"
+                >
+                <div class="page1-doctor-name">Dr. Wei Yuan</div>
+            </div>
+            <div id="page1-image3" class="page1-image-container">
+                <img src="images/new_dryisong.jpg" 
+                alt="dentist" 
+                height="350px" 
+                class="page1-img" 
+                onclick="scrollToSection(4)"
+                >
+                <div class="page1-doctor-name">Dr. Yi Song</div>
+            </div>
+        </div>
+    </div>
+    <div id="page2" class="page">
+        <div id="page2-image">
+            <img src="images/dentist2.webp" alt="orthodontist" height="500px" class="img">
+        </div>
+        <div id="page2-text">
+            <div id="page2-text-header">
+                <h1 class="h1text">Dr Zhang Wei</h1>
+            </div>
+            <div id="page2-text-subheader">
+                <h2>
+                    Dr. Zhang Wei graduated with a Bachelor of Dental Surgery from the National University of Singapore 
+                    and later pursued a Master's of Dental Surgery (Orthodontics) as well as a Master's of Orthodontics 
+                    RCS from the University of Edinburgh. With over 12 years of experience in orthodontics, he specialises 
+                    in treating both children and adults, offering a range of solutions including braces and clear 
+                    aligners to help patients achieve their ideal smile.
+                </h2>
+            </div>
+            <div id="page2-contact">
+                
+                <span> ✉️ dr_zhangwei@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+                
+                <span>☎️ +65 8123 4567</span>
+            </div>
+            <button class="appointment-button">
+                <a href="login.php" class="book-appointment-link">BOOK APPOINTMENT</a>
+            </button>
+        </div>
+    </div>
+    <div id="page3" class="page">
+        <div id="page3-text">
+            <div id="page3-text-header">
+                <h1 class="h1text">Dr Wei Yuan</h1>
+            </div>
+            <div id="page3-text-subheader">
+                <h2 style="margin-top:20px;">
+                    Dr. Wei Yuan completed his dental studies at the National University of Singapore before going on to 
+                    do a Master's in Dental Surgery (Orthodontics). With 15 years of experience, Dr. Wei Yuan is dedicated 
+                    to providing personalized orthodontic care using the latest techniques in the field and maximaze dental health outcomes.
+                </h2>
+            </div>
+            <div id="page3-contact">
+                <span> ✉️ dr_weiyuan@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+
+                <span> ☎️ +65 8222 5555</span>
+            </div>
+            <button class="appointment-button">
+                <a href="login.php" class="book-appointment-link">BOOK APPOINTMENT</a>
+            </button>
+        </div>
+        <div id="page3-image">
+            <img src="images/new_drweiyuan2.jpg" alt="dentist" height="500px" class="img">
+        </div>
+    </div>
+    <div id="page4" class="page">
+        <div id="page4-image">
+            <img src="images/new_dryisong2.jpg" alt="dentist" height="500px" class="img">
+        </div>
+        <div id="page4-text">
+            <div id="page4-text-header">
+                <h1 class="h1text">Dr Yi Song</h1>
+            </div>
+            <div id="page4-text-subheader">
+                <h2>
+                    Dr. Yi Song is an accredited specialist from the Singapore Dental Council. He holds a Master's Degree in 
+                    Dental Surgery (Orthodontics) from King's College London and has been practising orthodontics for 8 years. 
+                    He is passionate about utilising cutting-edge technology, including 3D imaging and digital orthodontics, to 
+                    provide precise and comfortable treatments for his patients.
+                </h2>
+            </div>
+            <div id="page4-contact">
+                <span> ✉️ dr_yisong@radiantsmilesdental.com.sg &nbsp;&nbsp;</span>
+                <span> ☎️ +65 9876 5432</span>
+            </div>
+            <button class="appointment-button">
+                <a href="login.php" class="book-appointment-link">BOOK APPOINTMENT</a>
+            </button>
+        </div>
+    </div>
+    <script>
+        // button scroll
+        function scrollToSection(pageNumber) {
+            const scrollAmount = window.innerHeight * 0.85 * (pageNumber - 1);
+            const scrollTo = window.scrollY + scrollAmount;
+
+            window.scrollTo({
+                top: scrollTo,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
