@@ -1,11 +1,9 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='patient')){
-            header("Location: login.php");
-            exit();
-        }
-    }
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'patient') {
+        header("Location: login.php");
+        exit();
+    } 
     $appt_id = $_POST['link']
     
 ?>
