@@ -1,11 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_type'])) {
-    if(!($_SESSION['user_type']=='doctor' )){
-        header("Location: ../login.php");
-        exit();
-    }
-}
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+    header("Location: login.php");
+    exit();
+} 
 $mysqli = new mysqli('localhost', 'root', '', 'dental');
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
