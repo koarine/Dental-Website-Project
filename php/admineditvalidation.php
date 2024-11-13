@@ -1,11 +1,9 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='admin' )){
-            header("Location: login.php");
-            exit();
-        }       
-    }
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+        header("Location: login.php");
+        exit();
+    } 
     $user_id=$_POST['link'];
     $name=$_POST["name"];
     $email=$_POST["email"];

@@ -1,11 +1,9 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user_type'])) {
-        if(!($_SESSION['user_type']=='admin' )){
-            header("Location: login.php");
-            exit();
-        }
-    }  
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
+        header("Location: login.php");
+        exit();
+    } 
     $user_id = $_POST['link'];
     $db = new mysqli("localhost","root","","dental");
     if ($db->connect_error) {
