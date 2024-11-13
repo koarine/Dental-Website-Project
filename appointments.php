@@ -34,7 +34,7 @@
             unset($_SESSION['adminedit_success']);
         }
     }
-    if(isset($_SESSION['adminedit_success'])){
+    if(isset($_SESSION['adminedit_username_exists'])){
         if($_SESSION['adminedit_username_exists']==true){ 
             echo '<script>alert("User Edit Error : Username exists ❌");</script>';
             unset($_SESSION['adminedit_username_exists']);
