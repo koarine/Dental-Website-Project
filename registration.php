@@ -46,7 +46,7 @@
             }
             #right-header a{
                 font-size: 23px;
-                font-weight: 550;
+                font-weight: 500;
                 color: #404040;
                 text-decoration: none;
                 text-align: center;
