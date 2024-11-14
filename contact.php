@@ -474,7 +474,7 @@
     <div id="page2">
         <div id="page2-container">
             <div id="page2-contact-form">
-                <form action="" method="post" onsubmit="validateForm()">
+                <form action="" method="post">
                     <div id="page2-form-title">
                         <p>Get in Touch</p>
                     </div>
@@ -528,7 +528,7 @@
                             id="phone"
                             class="userinput"
                             size="20"
-                            pattern="[0-9]{4}[0-9]{4}"
+                            pattern="[0-9]{8}"
                             placeholder="e.g. 95554444"
                             >
                         </div>
